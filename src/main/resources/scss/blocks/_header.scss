@@ -1,0 +1,27 @@
+.header {
+    position: relative;
+    min-height: 80px;
+    background: black center center/cover no-repeat;
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    
+        &__item {
+            color: white;
+            font-family: Tahoma;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            &:nth-child(2){
+                margin-left: 150px;
+            }
+            a {
+                text-decoration: none;
+                color: white;
+            }
+
+        }
+    }
+}
