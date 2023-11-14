@@ -1,7 +1,14 @@
 .header {
     position: relative;
     min-height: 80px;
-    background: black center center/cover no-repeat;
+
+        nav {
+        position: fixed;
+        width: 100% ;
+        height: 80px ;
+        z-index: 3;
+        background: black center center/cover no-repeat; 
+        }
     &__menu {
         display: flex;
         justify-content: space-between;

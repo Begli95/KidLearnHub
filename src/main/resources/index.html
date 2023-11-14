@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
     <header class="header">
-        <div class="container">
-            <div class="header__logo">
-                <img src="" alt="">
-            </div>
-            <div class="header__menu">
-                <div class="header__menu__item"><a href="#">О нас</a></div>
-                <div class="header__menu__item"><a href="#">Контакты</a></div>
-                <!-- <div class="header__menu__item">
-                    <button class="btn btn__header">Подробнее</button>
-                </div> -->
-                <div class="header__menu__item">
-                    <button class="btn btn__header">Записаться</button>
+        <nav>
+            <div class="container">
+                <div class="header__logo">
+                    <img src="" alt="">
+                </div>
+                <div class="header__menu">
+                    <div class="header__menu__item"><a href="#">О нас</a></div>
+                    <div class="header__menu__item"><a href="#">Контакты</a></div>
+                    <!-- <div class="header__menu__item">
+                        <button class="btn btn__header">Подробнее</button>
+                    </div> -->
+                    <div class="header__menu__item">
+                        <button id="consultation" class="btn btn__header">Записаться</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
+        
     </header>
 
 
@@ -34,9 +38,11 @@
             </h2>
             <div class="catalog__content catalog__content_active">
                 <div class="catalog-item">
+                    <div class="catalog-item__header">
+                        <h2 class="title catalog-item__title">Начальный</h2>
+                    </div>
                     <div class="catalog-item__wrapper">
-                        <div class="catalog-item__content catalog-item__content_active ">
-                            <h2 class="title catalog-item__title">начальный</h2>
+                        <div class="catalog-item__content catalog-item__content_active ">                  
                             <div class="catalog-item__price">₽5000 руб/месяц</div>
                             <div class="catalog-item__descr">В группе 10 человек</div>
                             <div class="catalog-item__descr">Возраст 3-7 лет</div>
@@ -45,10 +51,10 @@
                             <a href="" class="catalog-item__link">подробнее</a>
                         </div>
                         <ul class="catalog-item__list ">
-                            <li>Вы услышите звуковое оповещение о нужном пульсе во время тренировки;</li>
-                            <li>Вы увидите информативный графический индикатор целевых тренировочных зон пульса;</li>
-                            <li>Также Вы увидите информацию о расходе калорий за тренировку;</li>
-                            <li>Вы сможете посмотреть данные по 10 тренировкам.</li>
+                            <li>Преподавательский состав - высококвалифицированные специалисты</li>
+                            <li>В нашей группе индивидульных подход к каждому ученику;</li>
+                            <li>Проверка домашнего задания и проработка ошибок с преподавателем;</li>
+                            <li>Купив этот тариф Вы можете его использовать на 2 человека;</li>
                             <a href="#" class="catalog-item__back">назад</a>
                         </ul>
                     </div>
@@ -59,10 +65,12 @@
                 </div>
 
                 <div class="catalog-item">
+                    <div class="catalog-item__header">
+                        <h2 class="title catalog-item__title">Средний</h2>
+                    </div>
                     <div class="catalog-item__wrapper">
-                        <div class="catalog-item__content catalog-item__content_active ">
-                            <h2 class="title catalog-item__title">Средний</h2>
-                            <div class="catalog-item__price">₽5000 руб/месяц</div>
+                        <div class="catalog-item__content catalog-item__content_active ">                  
+                            <div class="catalog-item__price">₽7500 руб/месяц</div>
                             <div class="catalog-item__descr">В группе 5 человек</div>
                             <div class="catalog-item__descr">Возраст 3-7 лет</div>
                             <div class="catalog-item__descr">1 набор на 1 ученика</div>
@@ -70,10 +78,10 @@
                             <a href="" class="catalog-item__link">подробнее</a>
                         </div>
                         <ul class="catalog-item__list ">
-                            <li>Вы услышите звуковое оповещение о нужном пульсе во время тренировки;</li>
-                            <li>Вы увидите информативный графический индикатор целевых тренировочных зон пульса;</li>
-                            <li>Также Вы увидите информацию о расходе калорий за тренировку;</li>
-                            <li>Вы сможете посмотреть данные по 10 тренировкам.</li>
+                            <li>Преподавательский состав - высококвалифицированные специалисты</li>
+                            <li>В нашей группе индивидульных подход к каждому ученику;</li>
+                            <li>Проверка домашнего задания и проработка ошибок с преподавателем;</li>
+                            <li>Купив этот тариф Вы можете его использовать на 1 человека;</li>
                             <a href="#" class="catalog-item__back">назад</a>
                         </ul>
                     </div>
@@ -84,10 +92,12 @@
                 </div>
 
                 <div class="catalog-item">
+                    <div class="catalog-item__header">
+                        <h2 class="title catalog-item__title">Индивидуальный</h2>
+                    </div>
                     <div class="catalog-item__wrapper">
-                        <div class="catalog-item__content catalog-item__content_active ">
-                            <h2 class="title catalog-item__title">Индивидуальный</h2>
-                            <div class="catalog-item__price">₽5000 руб/месяц</div>
+                        <div class="catalog-item__content catalog-item__content_active ">                  
+                            <div class="catalog-item__price">₽12500 руб/месяц</div>
                             <div class="catalog-item__descr">В группе 1 человек</div>
                             <div class="catalog-item__descr">Возраст 3-7 лет</div>
                             <div class="catalog-item__descr">1 набор на 1 ученика</div>
@@ -95,10 +105,10 @@
                             <a href="" class="catalog-item__link">подробнее</a>
                         </div>
                         <ul class="catalog-item__list ">
-                            <li>Вы услышите звуковое оповещение о нужном пульсе во время тренировки;</li>
-                            <li>Вы увидите информативный графический индикатор целевых тренировочных зон пульса;</li>
-                            <li>Также Вы увидите информацию о расходе калорий за тренировку;</li>
-                            <li>Вы сможете посмотреть данные по 10 тренировкам.</li>
+                            <li>Преподавательский состав - высококвалифицированные специалисты</li>
+                            <li>Индивидуальная группая для каждого ученика;</li>
+                            <li>Проверка домашнего задания и проработка ошибок с преподавателем;</li>
+                            <li>Купив этот тариф Вы можете его использовать на 1 человека;</li>
                             <a href="#" class="catalog-item__back">назад</a>
                         </ul>
                     </div>
@@ -110,6 +120,38 @@
             </div>
         </div>
     </section>
+    
+    <footer class="footer">
+        <div class="footer__info">
+            <address class="footer__adr">730962, Свердловская область,<br> город Нарофоминск, пр. Гагарина, 37
+            </address>
+            <a class="footer__phone" href="tel:84999228974" >8 (999) 999-99-99</a>
+            <div class="footer__social">
+                
+                <a href="" class="footer__social-item"><img src="icons/facebook.svg" alt="facebook"></a>
+                <a href="" class="footer__social-item"><img src="icons/vk.svg" alt="vk"></a>
+                <a href="" class="footer__social-item"><img src="icons/pinterest.svg" alt="pinterest"></a>
+            </div>
+            
+        </div>
+    </footer>
+
+
+    <div class="overlay">
+        <div class="modal" id='order'>
+            <div class="modal__close">&times;</div>
+            <div class="modal__subtitle">Ваш тариф:</div>
+            <div class="modal__descr">средний</div>
+            <form class="feed-form feed-form_mt25" action="#">
+                <input name="name" placeholder="Ваше имя" type="text">
+                <input name="phn" placeholder="Ваш телефон" >
+                <input name="email" placeholder="Ваш E-mail" type="email">
+                <button class="btn button_submit">Записаться</button>
+            </form>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="js/script.js"></script>
 </body>

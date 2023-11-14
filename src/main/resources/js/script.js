@@ -11,4 +11,21 @@ $(document).ready(function(){
 
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
+
+    $('.btn__header').on('click',function() {
+        $('.overlay, #order').fadeIn('slow');
+    });
+
+    $('.modal__close').on('click', function() {
+        $('.overlay, #order').fadeOut('slow');
+    });
+
+
+    $('.button_mini').each(function(i) {
+        $(this).on('click',function() {
+            $('#order .modal__descr').text($('.catalog-item__title').eq(i).text());
+            $('.overlay, #order').fadeIn('slow');
+        });
+    });
+
 });

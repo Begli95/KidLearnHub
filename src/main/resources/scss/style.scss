@@ -2,7 +2,7 @@
 
 * {
     margin: 0;
-    font-family: Tahoma;
+    font-family: "Manrope", sans-serif;
 }
 
 .container {
@@ -14,3 +14,6 @@
 @import "blocks/button.scss";
 @import "blocks/catalog.scss";
 @import "blocks/title.scss";
+@import "blocks/modal.scss";
+@import "blocks/forms.scss";
+@import "blocks/footer.scss";
