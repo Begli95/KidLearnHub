@@ -1,15 +1,10 @@
 package com.kidlearnhub.controllers;
 
-import io.javalin.Javalin;
+import com.kidlearnhub.service.RenderHtmlFile;
 import io.javalin.http.Handler;
 
 public class HomePageController {
     public static Handler homeHandler = ctx -> {
-        ctx.render("templates/index.html").contentType("text/html; charset=UTF-8");;
+        ctx.result(RenderHtmlFile.render("templates/main_page.html")).contentType("text/html");
     };
-
-    private static void addRoutes(Javalin app) {
-        //app.get("/", HomePageController.homeHandler);
-//        app.post("/scan", ScanController.scanHandler);
-    }
 }
