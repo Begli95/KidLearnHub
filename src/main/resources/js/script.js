@@ -23,9 +23,25 @@ $(document).ready(function(){
 
     $('.button_mini').each(function(i) {
         $(this).on('click',function() {
-            $('#order .modal__descr').text($('.catalog-item__title').eq(i).text());
             $('.overlay, #order').fadeIn('slow');
         });
+    });
+
+    $(document).ready(function() {
+        var bg = $("#background");
+        var x = 0;
+        var y = 0;
+        var speedX = 0.5;
+        var speedY = 0.2;
+ 
+        setInterval(updateBackground, 10); // Обновление фона каждые 10 миллисекунд
+ 
+        function updateBackground() {
+            x += speedX;
+            y += speedY;
+ 
+            bg.css("background-position", x + "px " + y + "px");
+        }
     });
 
 });

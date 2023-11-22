@@ -6,6 +6,8 @@
     font-size: 16px;
     color: white;
     cursor: pointer;
+    transition: all 1s;
+    border-radius: 40px;
     &:hover {
         box-shadow: 3px 3px 20px #D91842;
     }

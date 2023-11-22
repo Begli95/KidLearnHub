@@ -11,23 +11,60 @@
     <header class="header">
         <nav>
             <div class="container">
-                <div class="header__logo">
-                    <img src="" alt="">
-                </div>
-                <div class="header__menu">
-                    <div class="header__menu__item"><a href="#">О нас</a></div>
-                    <div class="header__menu__item"><a href="#">Контакты</a></div>
-                    <!-- <div class="header__menu__item">
-                        <button class="btn btn__header">Подробнее</button>
-                    </div> -->
-                    <div class="header__menu__item">
-                        <button id="consultation" class="btn btn__header">Записаться</button>
+                <div class="header__wrapper">
+                    <div class="header__logo">
+                        <a class="header__src" href="#">
+                            <img src="icons/logo.svg" alt="logo">
+                        </a>                        
+                    </div>
+                    <div class="header__menu">
+                        <div class="header__menu__item"><a href="#">О нас</a></div>
+                        <div class="header__menu__item"><a href="#">Контакты</a></div>
+                        <!-- <div class="header__menu__item">
+                            <button class="btn btn__header">Подробнее</button>
+                        </div> -->
+                        <div class="header__menu__item">
+                            <button id="consultation" class="btn btn__header">Записаться</button>
+                        </div>
                     </div>
                 </div>
+                
             </div>
         </nav>
         
     </header>
+
+
+    <section id="background" class="description">
+        <div class="container">
+            <h2 class="title">О нас</h2>
+            <h2 class="description__subtitle"> Введение</h2>
+            <ul class="description__txt">                
+                <li>Это начальный курс для детей, не имеющих опыта работы с робототехникой.</li>
+                <li>Ваш ребенок научится строить роботизированные модели, программировать с помощью блоков.</li>
+                <li>Самое главное, что это будет их первое знакомство с вводной логикой программирования.</li>
+                <li>Мы разработали нашу программу специально для детей от 3 до 7лет.</li>
+                <li>Предварительный опыт программирования не требуется.</li>
+            </ul>
+            <h2 class="description__subtitle">О курсе</h2>
+            <ul class="description__txt">                
+                <li>Занятия будут развивать и укреплять мелкую моторику и когнитивные навыки, которые важны для этой возрастной группы.</li>
+                <li>Дети используют Lego WeDo 2.0 для конструирования роботов для решения реальных проблем.</li>
+                <li> Каждая сборка основана на отдельной теме и исследует ряд различных компонентов и комбинаций сборок с возможностью кодирования множества различных, забавных и движущихся роботизированных решений.</li>
+                <li>Дети учатся программировать своих роботов в интерактивных испытаниях.</li>
+                <li>Помимо основ робототехники, дети изучают ключевые инженерные принципы, такие как сила и движение, передаточные числа и аэродинамика.</li>
+                <li>Если ваш ребенок уже посещал один из этих семинаров, то его обучение будет расширено, и ему не придется повторять тот же контент, что и раньше.</li>
+            </ul>
+            <h2 class="description__subtitle">Основные цели обучения</h2>
+            <ul class="description__txt">
+                <li>Вовлечение детей в науку, делая ее реальной и актуальной</li>
+                <li>Базовые навыки программирования</li>
+                <li>Навыки совместной работы и презентации</li>
+                <li>Критическое мышление и решение проблем</li>
+            </ul>
+        </div>
+
+    </section>
 
 
 
@@ -141,14 +178,22 @@
         <div class="modal" id='order'>
             <div class="modal__close">&times;</div>
             <div class="modal__subtitle">Ваш тариф:</div>
-            <div class="modal__descr">средний</div>
             <form class="feed-form feed-form_mt25" action="#">
+                <select class="select">
+                    <option class="modal__descr" value="s1">Начальный</option>
+                    <option class="modal__descr" value="s2">Средний</option>
+                    <option class="modal__descr" value="s3">Индивидуальный</option>
+                </select>
                 <input name="name" placeholder="Ваше имя" type="text">
                 <input name="phn" placeholder="Ваш телефон" >
                 <input name="email" placeholder="Ваш E-mail" type="email">
                 <button class="btn button_submit">Записаться</button>
             </form>
         </div>
+    
+
+    
+        
     </div>
 
 
