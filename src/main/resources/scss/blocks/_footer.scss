@@ -1,7 +1,7 @@
 .footer {
     height: 380px;
     position: relative;
-    background: black center center/cover no-repeat; 
+    background: $night-color center center/cover no-repeat; 
     &__info {
         position: absolute;
         top: 0;

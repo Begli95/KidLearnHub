@@ -1,22 +1,62 @@
 .description {
     padding: 50px 0;
-    background: url('../img/description_bg.jpg') repeat center/cover;
-    transition: all 20s;
-
-    h2 {
-        color: white;
+    background: url('../img/night.jpg') repeat center center/cover;
+    transition: all 1s;
+    min-height: 850px;
+    position: relative;
+    &_active {
+        background: url('../img/day.jpg') repeat center center/cover;
+        
+        
     }
-    ul{
+
+    &__title {
+        color: $description-color;
+    }
+    &__txt{
         margin-top: 40px;
-        li{
+        &__elem{
             margin-top: 10px;
-            color: white;
+            color: $description-color;
         }
 
     }
     &__subtitle {
         text-align: center;
         margin-top: 40px;
-        color: white;
+        color: $description-color;
+    }
+
+    &__moon {
+        right: 80px;
+        position: absolute;
+        cursor: pointer;
+        transition: all 1s;
+        img {
+            height: 100px;
+        }
+        &_active{
+            transition: all 1s;
+            opacity: 0;
+        }
+    }
+    &__sun {
+        opacity: 0;
+        top: 25px;
+        right: 60px;
+        position: absolute;
+        cursor: pointer;
+        transition: all 1s;
+        img {
+            height: 150px;
+        }
+        &_active{
+            transition: all 1s;
+            opacity: 1;
+        }
+    }
+
+    &__night-color {
+        color: $night-color;
     }
 }

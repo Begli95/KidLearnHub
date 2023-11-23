@@ -8,9 +8,29 @@ $(document).ready(function(){
             });
         });
     };
-
+    
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
+
+    function toggleSlider(items) {
+        $(items).each(function() {
+            $(this).on('click', function() {
+                $('.description').toggleClass('description_active');
+                $('.description__sun').toggleClass('description__sun_active');
+                $('.description__moon').toggleClass('description__moon_active');
+                $('.description__title').toggleClass('description__night-color');
+                $('.description__subtitle').toggleClass('description__night-color');
+                $('.description__txt').toggleClass('description__night-color');
+                $('.description__txt__elem').toggleClass('description__night-color');
+                
+                
+            });
+        });
+    };
+
+    toggleSlider('.description__sun')
+    toggleSlider('.description__moon')
+
 
     $('.btn__header').on('click',function() {
         $('.overlay, #order').fadeIn('slow');
@@ -27,7 +47,7 @@ $(document).ready(function(){
         });
     });
 
-    $(document).ready(function() {
+   /*  $(document).ready(function() {
         var bg = $("#background");
         var x = 0;
         var y = 0;
@@ -42,6 +62,6 @@ $(document).ready(function(){
  
             bg.css("background-position", x + "px " + y + "px");
         }
-    });
+    }); */
 
 });
