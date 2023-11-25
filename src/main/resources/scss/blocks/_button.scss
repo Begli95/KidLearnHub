@@ -1,5 +1,5 @@
 .btn {
-    background-color: #D91842;
+    background-color: $main-color;
     border: none;
     width: 200px;
     padding: 10px 0 10px 0;
@@ -9,7 +9,7 @@
     transition: all 1s;
     border-radius: 40px;
     &:hover {
-        box-shadow: 3px 3px 20px #D91842;
+        box-shadow: 3px 3px 20px $main-color;
     }
 }
 

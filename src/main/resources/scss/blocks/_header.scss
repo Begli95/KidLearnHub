@@ -1,23 +1,21 @@
 .header {
     position: relative;
     min-height: 120px;
-
         nav {    
             position: fixed;
             width: 100% ;
             height: 120px;
             z-index: 3;
-            background: $night-color center center/cover no-repeat; 
+            background: white center center/cover no-repeat; 
         }
     &__wrapper {
         display: flex;
         justify-content: space-between;
-        margin-top: 10px;
+        margin-top: 40px;
     }
     &__logo {
-
         img {
-            height: 100px;
+            height: 40px;
         }
         span {
             color: $main_color;
@@ -32,7 +30,6 @@
         flex-direction: row;
     
         &__item {
-            color: white;
             font-family: Tahoma;
             font-size: 16px;
             font-weight: 400;
@@ -43,7 +40,6 @@
             }
             a {
                 text-decoration: none;
-                color: white;
             }
 
         }

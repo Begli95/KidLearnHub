@@ -1,62 +1,58 @@
 .description {
-    padding: 50px 0;
-    background: url('../img/night.jpg') repeat center center/cover;
+    padding: 60px 0;
+    background: #EFF8EE;
     transition: all 1s;
-    min-height: 850px;
-    position: relative;
-    &_active {
-        background: url('../img/day.jpg') repeat center center/cover;
-        
-        
+    min-height: 650px;
+    background-size: 200px auto;
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__content {
+        width: 50%;
+    }
+
+    &__bg_boy {
+        width: 50%;
+        img {
+            width: 100%;
+        }
     }
 
     &__title {
-        color: $description-color;
+        font-size: 58px;
+        line-height: 80px;
+        text-align: left;
+        margin-top: 35px;
     }
     &__txt{
-        margin-top: 40px;
-        &__elem{
-            margin-top: 10px;
-            color: $description-color;
-        }
-
+        margin-top: 35px;
+        font-size: 20px;
+        font-weight: 400;
     }
     &__subtitle {
-        text-align: center;
-        margin-top: 40px;
-        color: $description-color;
+        color: #96BB7C;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
     }
 
-    &__moon {
-        right: 80px;
-        position: absolute;
-        cursor: pointer;
-        transition: all 1s;
-        img {
-            height: 100px;
-        }
-        &_active{
-            transition: all 1s;
-            opacity: 0;
-        }
+    &__btn {
+        margin-top: 35px;
     }
-    &__sun {
-        opacity: 0;
-        top: 25px;
-        right: 60px;
-        position: absolute;
-        cursor: pointer;
-        transition: all 1s;
-        img {
-            height: 150px;
-        }
-        &_active{
-            transition: all 1s;
-            opacity: 1;
+    &__btn_promo{
+        width: 305px;
+        height: 50px;
+    }
+    &__btn_second{
+        width: 165px;
+        height: 50px;
+        background: none;
+        border: solid 1px $main-color;
+        a {
+            text-decoration: none;
+            color: $main-color;
         }
     }
 
-    &__night-color {
-        color: $night-color;
-    }
 }
