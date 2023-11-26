@@ -100,6 +100,38 @@
         </div>
     </section>
 
+    <section class="scratch">
+        <div class="container">
+            <div class="scratch__content">
+                <img class="scratch__bg" src="img/bg__cats.jpg" alt="cat">
+                <div class="scratch__wrapper">
+                    <h2 class="title scratch__title ">Игры на Scratch</h2>
+                    <div class="scratch__descr">Разблокируй свой потенциал с курсами по программированию игр на Scratch! Играй, твори и освой магию кода вместе с нами. Дети будут не только создавать свои собственные игры, но и развивать ключевые навыки в легкой и увлекательной форме. Подготовь своего маленького разработчика к захватывающему путешествию в мир программирования!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video">
+        <div class="container">
+            <div class="video__content">
+                <div class="video__wrapper">
+                    <h2 class="title video__title ">Программирование на WeDo 2</h2>
+                    <div class="video__descr">Разблокируй свой потенциал с курсами по программированию 
+                        игр на Scratch! Играй, твори и освой магию кода вместе с нами. 
+                        Дети будут не только создавать свои собственные игры, но и 
+                        развивать ключевые навыки в легкой и увлекательной форме. 
+                        Подготовь своего маленького разработчика к захватывающему 
+                        путешествию в мир программирования!
+                    </div>
+                </div>
+                <img class="video__bg" src="img/Photo__video.jpg" alt="photo">
+                <img class="video__play" src="icons/play.png" alt="play">                
+            </div>
+        </div>
+    </section>
+
     <section class="catalog">
         <div class="container">
             <h2 class="title">
@@ -190,22 +222,54 @@
         </div>
     </section>
 
-    <section class="scratch">
+    <section class="sending">
         <div class="container">
-            <div class="scratch__video">
-                <h2 class="title">Что такое робототехника?</h2>
-                <iframe src="https://scratch.mit.edu/projects/520096490/embed" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
-                <h2 class="title scratch__title ">Пример работы выполненный на cospaces</h2>
-                <iframe src="https://edu.cospaces.io/HWR-WSS" scrolling="no"></iframe>
+            <div class="modal modal__footer">
+                <div class="modal__subtitle">Ваш тариф:</div>
+                <form class="feed-form feed-form_mt25" action="#">
+                    <select class="select">
+                        <option class="modal__descr" value="s0" disabled>Выберите тариф</option>
+                        <option class="modal__descr" value="s1">Пробный урок</option>
+                        <option class="modal__descr" value="s2">Индивидульно</option>
+                        <option class="modal__descr" value="s3">Группа</option>
+                    </select>
+                    <input class="feed-form__input" name="name" placeholder="Ваше имя" type="text">
+                    <input class="feed-form__input"  name="phn" placeholder="Ваш телефон" >
+                    <input class="feed-form__input"  name="email" placeholder="Ваш E-mail" type="email">
+                    <h2 class="title modal__title ">Желаемое расписание</h2>
+                    <div class="modal__week">
+                        <input class="modal__week__item" type="submit" value="ПН">
+                        <input class="modal__week__item" type="submit" value="ВТ">
+                        <input class="modal__week__item" type="submit" value="СР">
+                        <input class="modal__week__item" type="submit" value="ЧТ">
+                        <input class="modal__week__item" type="submit" value="ПТ">
+                        <input class="modal__week__item" type="submit" value="СБ">
+                    </div>
+    
+                    <h2 class="title modal__title">Время занятий</h2>
+                    <div class="modal__time">
+                        <input class="modal__time__item" type="submit" value="15:00-16:00">
+                        <input class="modal__time__item" type="submit" value="16:00-17:00">
+                        <input class="modal__time__item" type="submit" value="17:00-18:00">
+                        <input class="modal__time__item" type="submit" value="18:00-19:00">
+                        <input class="modal__time__item" type="submit" value="19:00-20:00">
+                        <input class="modal__time__item" type="submit" value="20:00-21:00">
+                    </div>
+                    
+                    <button class="btn button_submit">Записаться</button>
+                </form>
             </div>
         </div>
     </section>
 
     
+
+    
     
     <footer class="footer">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A18e0cb50e0456d6fb9d70d373f5c722b6cd314972e9bfb6558c274a806f210a3&amp;source=constructor"></iframe>
         <div class="footer__info">
-            <address class="footer__adr">730962, Свердловская область,<br> город Нарофоминск, пр. Гагарина, 37
+            <address class="footer__adr"> 143306, Московская область,<br> город Нарофоминск Профсоюзная улица, 37
             </address>
             <a class="footer__phone" href="tel:84999228974" >8 (999) 999-99-99</a>
             <div class="footer__social">
@@ -230,9 +294,29 @@
                     <option class="modal__descr" value="s2">Индивидульно</option>
                     <option class="modal__descr" value="s3">Группа</option>
                 </select>
-                <input name="name" placeholder="Ваше имя" type="text">
-                <input name="phn" placeholder="Ваш телефон" >
-                <input name="email" placeholder="Ваш E-mail" type="email">
+                <input class="feed-form__input" name="name" placeholder="Ваше имя" type="text">
+                <input class="feed-form__input"  name="phn" placeholder="Ваш телефон" >
+                <input class="feed-form__input"  name="email" placeholder="Ваш E-mail" type="email">
+                <h2 class="title modal__title ">Желаемое расписание</h2>
+                <div class="modal__week">
+                    <input class="modal__week__item" type="submit" value="ПН">
+                    <input class="modal__week__item" type="submit" value="ВТ">
+                    <input class="modal__week__item" type="submit" value="СР">
+                    <input class="modal__week__item" type="submit" value="ЧТ">
+                    <input class="modal__week__item" type="submit" value="ПТ">
+                    <input class="modal__week__item" type="submit" value="СБ">
+                </div>
+
+                <h2 class="title modal__title">Время занятий</h2>
+                <div class="modal__time">
+                    <input class="modal__time__item" type="submit" value="15:00-16:00">
+                    <input class="modal__time__item" type="submit" value="16:00-17:00">
+                    <input class="modal__time__item" type="submit" value="17:00-18:00">
+                    <input class="modal__time__item" type="submit" value="18:00-19:00">
+                    <input class="modal__time__item" type="submit" value="19:00-20:00">
+                    <input class="modal__time__item" type="submit" value="20:00-21:00">
+                </div>
+                
                 <button class="btn button_submit">Записаться</button>
             </form>
         </div>        

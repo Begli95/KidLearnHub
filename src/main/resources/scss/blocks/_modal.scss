@@ -9,13 +9,20 @@
 
 .modal {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 380px;
     min-height: 400px;
-    background-color: #f2f2f2;
+    background: #f2f2f2;
     padding: 38px 40px 40px 40px;
+    &__footer {
+        display: block;
+        position: static;
+        transform: none;
+        margin: 0 auto;
+        background: #EFF8EE;
+    }
     &__close {
         position: absolute;
         top: 0;
@@ -24,6 +31,10 @@
         line-height: 20px;
         color: $main-color ;
         cursor: pointer;
+    }
+    &__title {
+        font-size: 16px;
+        text-transform: none;
     }
     &__subtitle {
         color: #0d0d0d;
@@ -44,6 +55,42 @@
         border: none;
         text-align: center;
         margin-bottom: 15px;
+    }
+    &__week,&__time {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 150px;
+        margin: 0 auto 30px;
+        &__item {
+            color: $main-color;
+            margin: 0 5px;
+            width: 40px;
+            cursor: pointer;
+            background: none;
+            border: solid 1px $main-color;
+            border-radius: 40px;
+            margin-top: 15px;
+            transition: all 1s;
+            &:hover {
+                box-shadow: 3px 3px 20px $main-color;
+            }
+            &_active {
+                background: $main-color;
+                color: white;
+            }
+        }
+        
+    }
+    &__time {
+        width: 300px;
+        &__item {
+            width: 100px;
+            &:hover {
+                box-shadow: 3px 3px 20px $main-color;
+            }
+        }
     }
 }
 

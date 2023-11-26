@@ -12,25 +12,27 @@ $(document).ready(function(){
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
 
-    function toggleSlider(items) {
-        $(items).each(function() {
-            $(this).on('click', function() {
-                $('.description').toggleClass('description_active');
-                $('.description__sun').toggleClass('description__sun_active');
-                $('.description__moon').toggleClass('description__moon_active');
-                $('.description__title').toggleClass('description__night-color');
-                $('.description__subtitle').toggleClass('description__night-color');
-                $('.description__txt').toggleClass('description__night-color');
-                $('.description__txt__elem').toggleClass('description__night-color');
-                
-                
+    function toggleCheckboxweek(item) {
+        $(item).each(function(i) {
+            $(this).on('click', function(e) {
+                e.preventDefault();
+                $('.modal__week__item').eq(i).toggleClass('modal__week__item_active');
             });
         });
     };
 
-    toggleSlider('.description__sun')
-    toggleSlider('.description__moon')
+    toggleCheckboxweek ('.modal__week__item');
 
+    function toggleCheckboxtime(item) {
+        $(item).each(function(i) {
+            $(this).on('click', function(e) {
+                e.preventDefault();
+                $('.modal__time__item').eq(i).toggleClass('modal__time__item_active');
+            });
+        });
+    };
+
+    toggleCheckboxtime ('.modal__time__item');
 
     $('.btn__header').on('click',function() {
         $('.overlay, #order').fadeIn('slow');

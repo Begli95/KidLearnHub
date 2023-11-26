@@ -1,14 +1,14 @@
-.scratch {
-    padding: 160px 0;
+.video {
     &__content {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
 
     &__wrapper{
         width: 400px;
-        margin-left: 50px;
+        margin-right: 50px;
     }
 
     &__descr {
@@ -18,13 +18,23 @@
     }
 
     &__bg {
-        height: 500px;
-        margin-right: 50px;
+        height: 400px;
+        margin-left: 50px;
     }
 
     &__title {
     font-size: 40px;
     font-weight: 900;
     text-align: left;
+    }
+
+    &__play {
+        position: absolute;
+        height: 100px;
+        cursor: pointer;
+        background: $main-color;
+        border-radius: 100%;
+        padding: 20px;
+        right: 25%;
     }
 }
