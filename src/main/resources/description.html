@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <div class="container">
+                <div class="header__wrapper">
+                    <div class="header__logo">
+                        <a class="header__src" href="index.html">
+                            <img src="icons/Logo_txt.png" alt="logo">
+                        </a>                        
+                    </div>
+                    <div class="header__menu">
+                        <div class="header__menu__item"><a href="description.html">О нас</a></div>
+                        <div class="header__menu__item"><a href="contact.html">Контакты</a></div>
+                        <!-- <div class="header__menu__item">
+                            <button class="btn btn__header">Подробнее</button>
+                        </div> -->
+                        <div class="header__menu__item">
+                            <button id="consultation" class="btn btn__header">Записаться</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+        
+    </header>
+
+
+    <section id="background" class="description ">
+        <div class="container">
+            <div class="description__wrapper">
+                <div class="description__content">
+                    <h1 class="title description__title"><span class="Scratch">О компании</span></h1>
+                    <div class="description__subtitle">Занятия по робототехнике для детей от 3 до 7 лет</div>
+                    <div class="description__txt"> Мы молодая компания, которая направлена на развитие детей. Наши переподаватели легко найдут общий язык с Вашим ребенком. Методики обучения заинтересует детей.</div>
+                    <div class="description__btn">
+                        <button class="btn description__btn_promo">Записаться на пробный урок</button>                  
+                    </div>                    
+                </div>
+                <div class="description__bg_boy">
+                    <img src="img/BG.png" alt="boy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="overlay">
+        <div class="modal" id='order'>
+            <div class="modal__close">&times;</div>
+            <div class="modal__subtitle">Ваш тариф:</div>
+            <form class="feed-form feed-form_mt25" action="#">
+                <select class="select">
+                    <option class="modal__descr" value="s0" disabled>Выберите тариф</option>
+                    <option class="modal__descr" value="s1">Пробный урок</option>
+                    <option class="modal__descr" value="s2">Индивидульно</option>
+                    <option class="modal__descr" value="s3">Группа</option>
+                </select>
+                <input class="feed-form__input" name="name" placeholder="Ваше имя" type="text">
+                <input class="feed-form__input"  name="phn" placeholder="Ваш телефон" >
+                <input class="feed-form__input"  name="email" placeholder="Ваш E-mail" type="email">
+                <h2 class="title modal__title ">Желаемое расписание</h2>
+                <div class="modal__week">
+                    <input class="modal__week__item" type="submit" value="ПН">
+                    <input class="modal__week__item" type="submit" value="ВТ">
+                    <input class="modal__week__item" type="submit" value="СР">
+                    <input class="modal__week__item" type="submit" value="ЧТ">
+                    <input class="modal__week__item" type="submit" value="ПТ">
+                    <input class="modal__week__item" type="submit" value="СБ">
+                </div>
+
+                <h2 class="title modal__title">Время занятий</h2>
+                <div class="modal__time">
+                    <input class="modal__time__item" type="submit" value="15:00-16:00">
+                    <input class="modal__time__item" type="submit" value="16:00-17:00">
+                    <input class="modal__time__item" type="submit" value="17:00-18:00">
+                    <input class="modal__time__item" type="submit" value="18:00-19:00">
+                    <input class="modal__time__item" type="submit" value="19:00-20:00">
+                    <input class="modal__time__item" type="submit" value="20:00-21:00">
+                </div>
+                
+                <button class="btn button_submit">Записаться</button>
+            </form>
+        </div>        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

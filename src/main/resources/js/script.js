@@ -34,7 +34,19 @@ $(document).ready(function(){
 
     toggleCheckboxtime ('.modal__time__item');
 
+    $('.video__play').on('click',function() {
+        $('.overplay, #video').fadeIn('slow');
+    });
+
+    $('.modal__close-video').on('click', function() {
+        $('.overplay, #video').fadeOut('slow');
+    });
+
     $('.btn__header').on('click',function() {
+        $('.overlay, #order').fadeIn('slow');
+    });
+
+    $('.description__btn_promo').on('click',function() {
         $('.overlay, #order').fadeIn('slow');
     });
 
@@ -48,6 +60,56 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn('slow');
         });
     });
+
+    jQuery(function($){
+        $(document).mouseup( function(e){ // событие клика по веб-документу
+            var div = $( "#order" ); // тут указываем ID элемента
+            if ( !div.is(e.target) // если клик был не по нашему блоку
+                && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
+                $('.overlay, #order').fadeOut('slow');; // скрываем его
+            }
+        });
+    });
+
+    $("a[href=#catalog]").click(function(){
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
+    });
+
+    $('input[name=phn]').mask("+7 (999) 999-9999");
+
+    function validateForms(form){
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phn:'required',
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите свое имя",
+                    minlength: jQuery.validator.format("Введите {0} символа!")
+                },
+                phn: "Пожалуйста, введите свой номер",
+                email: {
+                  required: "Пожалуйста, введите свою почту",
+                  email: "Неправильно введен адресс почты"
+                }
+            }
+        });
+    };
+
+    validateForms('#order form');
+    validateForms('.modal__footer form');
+
+    
 
    /*  $(document).ready(function() {
         var bg = $("#background");

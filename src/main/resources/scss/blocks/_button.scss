@@ -20,3 +20,14 @@
 .button_submit {
     margin: 0 auto;
 }
+
+
+@media (max-width: 575px) {
+    .btn {
+        font-size: 14px;
+        &__header {
+            width: 120px;
+            padding: 0 5px;
+        }
+    }
+}

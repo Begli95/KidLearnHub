@@ -5,9 +5,26 @@
     font-family: "Manrope", sans-serif;
 }
 
+
+@media screen and (max-width: 667px) {
+    body {
+        overflow-x: hidden !important;
+    }
+}
+
 .container {
     max-width: 1280px;
     margin: 0 auto;
+}
+
+.WeDo_2{
+    color: #9D33DB;
+    text-transform: uppercase;
+}
+
+.Scratch{
+    color: #F59D1E;
+    text-transform: uppercase;
 }
 
 @import "blocks/header.scss";
