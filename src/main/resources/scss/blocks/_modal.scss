@@ -1,10 +1,16 @@
-.overlay,.overplay {
+.overlay,.overplay,.entrance {
     display: none;
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     background: rgba(0, 0, 0, 0.56);
+}
+
+.entrance__src {
+    text-align: center;
+    margin: 20px auto 0;
+    text-decoration: none;
 }
 
 .modal {
@@ -16,12 +22,17 @@
     min-height: 400px;
     background: #f2f2f2;
     padding: 30px 40px;
+    max-height: 73vh;
     &__footer {
         display: block;
         position: static;
         transform: none;
         margin: 0 auto;
         background: #EFF8EE;
+    }
+
+    &_mini {
+        min-height: 150px;
     }
 
     &__video {
@@ -77,7 +88,7 @@
         align-items: center;
         flex-wrap: wrap;
         width: 150px;
-        margin: 0 auto 30px;
+        margin: 0 auto 10px;
         &__item {
             color: $main-color;
             margin: 0 5px;
@@ -104,6 +115,23 @@
             width: 100px;
             &:hover {
                 box-shadow: 3px 3px 20px $main-color;
+            }
+        }
+    }
+}
+
+@media (max-height: 800px) {
+    .modal {
+        &__week {
+            width: 300px;
+            &__item {
+                width: 35px;
+            }
+        }
+        &__time {
+            width: 300px;
+            &__item {
+                width: 85px;
             }
         }
     }

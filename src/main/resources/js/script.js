@@ -34,6 +34,14 @@ $(document).ready(function(){
 
     toggleCheckboxtime ('.modal__time__item');
 
+    $('.header__logo').on('click',function() {
+        $('.entrance, #thanks').fadeIn('slow');
+    });
+
+    $('.modal__close').on('click', function() {
+        $('.entrance, #thanks').fadeOut('slow');
+    });
+
     $('.video__play').on('click',function() {
         $('.overplay, #video').fadeIn('slow');
     });
