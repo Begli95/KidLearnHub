@@ -120,23 +120,6 @@
     }
 }
 
-@media (max-height: 800px) {
-    .modal {
-        &__week {
-            width: 300px;
-            &__item {
-                width: 35px;
-            }
-        }
-        &__time {
-            width: 300px;
-            &__item {
-                width: 85px;
-            }
-        }
-    }
-}
-
 @media (max-width: 767px) {
     .modal {
         iframe {
