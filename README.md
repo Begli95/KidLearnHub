@@ -16,7 +16,7 @@ KidLearnHub - это образовательная платформа, созд
 Установка и Запуск
 Бекенд:
       Убедитесь, что на вашем компьютере установлен Java.
-      Клонируйте репозиторий: git clone https://github.com/ваш-пользователь/kid-learn-hub-backend.git
+      Клонируйте репозиторий: git clone https://github.com/Begli95/KidLearnHub/kid-learn-hub-backend.git
       Перейдите в папку с бекендом: cd kid-learn-hub-backend
       Запустите приложение: java -jar kid-learn-hub-backend.jar
       
