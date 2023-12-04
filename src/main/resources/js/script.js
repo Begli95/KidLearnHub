@@ -193,50 +193,55 @@ $(document).ready(function(){
  
     $('input[name=phn]').mask("+7 (999) 999-9999");
 
-/*     function checkChooseWeeks($) {
-        var isChoose = false;
-        $('.modal__week__item').each(function(){            
-            if ($(this).hasClass('modal__week__item_active')) {
-                isChoose = true;
-            // Выполнение определенных действий, если класс присутствует
-            } 
-            
+
+    $('form').submit(function(e) {
+        e.preventDefault();
+
+        if (!$(this).valid()){
+            return;
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../index.html",
+            data: $(this).serialize()
+        }).done(function() {
+            $(this).find("input").val("");
+            $('form').trigger('reset');
         });
-        return isChoose;
-    }
+        return false;
+    });
 
-    $('#check').on('click',function() {
-        checkChooseWeeks('.modal__week__item');        
-        if (checkChooseWeeks()) {
-            alert ("Отправил");
-        } else{
-            alert ("Не отправил");     
-        }
-    }); */
-
-
-    
-
-
-    
-
-   /*  $(document).ready(function() {
-        var bg = $("#background");
-        var x = 0;
-        var y = 0;
-        var speedX = 0.5;
-        var speedY = 0.2;
- 
-        setInterval(updateBackground, 10); // Обновление фона каждые 10 миллисекунд
- 
-        function updateBackground() {
-            x += speedX;
-            y += speedY;
- 
-            bg.css("background-position", x + "px " + y + "px");
-        }
-    }); */
 
 });
+
+function sendJSON() {
+    // с помощью jQuery обращаемся к элементам на странице по их именам
+    let name = document.querySelector('#name');
+    let lastname = document.querySelector('#lastname');
+    // а вот сюда мы поместим ответ от сервера
+    let result = document.querySelector('.result');
+    // создаём новый экземпляр запроса XHR
+    let xhr = new XMLHttpRequest();
+    // адрес, куда мы отправим нашу JSON-строку
+    let url = "http://mihailmaximov.ru/projects/json/json.php";
+    // открываем соединение
+    xhr.open("POST", url, true);
+    // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+    xhr.setRequestHeader("Content-Type", "application/json");
+    // когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
+    xhr.onreadystatechange = function () {
+      // если запрос принят и сервер ответил, что всё в порядке
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // выводим то, что ответил нам сервер — так мы убедимся, что данные он получил правильно
+        result.innerHTML = this.responseText;
+      }
+    };
+    // преобразуем наши данные JSON в строку
+    var data = JSON.stringify({ "name": name.value, "lastname": lastname.value });
+    // когда всё готово, отправляем JSON на сервер
+    xhr.send(data);
+  }
+
 
 
