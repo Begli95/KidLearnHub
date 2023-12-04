@@ -194,7 +194,7 @@ $(document).ready(function(){
     $('input[name=phn]').mask("+7 (999) 999-9999");
 
 
-    $('form').submit(function(e) {
+    /* $('form').submit(function(e) {
         e.preventDefault();
 
         if (!$(this).valid()){
@@ -203,45 +203,60 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "../index.html",
+            url: "http://localhost:7070",
             data: $(this).serialize()
         }).done(function() {
             $(this).find("input").val("");
             $('form').trigger('reset');
+            $('#consultation, #order').fadeOut();
         });
         return false;
-    });
-
+    }); */
+ 
 
 });
 
-function sendJSON() {
-    // с помощью jQuery обращаемся к элементам на странице по их именам
-    let name = document.querySelector('#name');
-    let lastname = document.querySelector('#lastname');
-    // а вот сюда мы поместим ответ от сервера
-    let result = document.querySelector('.result');
-    // создаём новый экземпляр запроса XHR
-    let xhr = new XMLHttpRequest();
-    // адрес, куда мы отправим нашу JSON-строку
-    let url = "http://mihailmaximov.ru/projects/json/json.php";
-    // открываем соединение
-    xhr.open("POST", url, true);
-    // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
-    xhr.setRequestHeader("Content-Type", "application/json");
-    // когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
-    xhr.onreadystatechange = function () {
-      // если запрос принят и сервер ответил, что всё в порядке
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        // выводим то, что ответил нам сервер — так мы убедимся, что данные он получил правильно
-        result.innerHTML = this.responseText;
-      }
-    };
-    // преобразуем наши данные JSON в строку
-    var data = JSON.stringify({ "name": name.value, "lastname": lastname.value });
-    // когда всё готово, отправляем JSON на сервер
-    xhr.send(data);
-  }
+$(document).ready(function() {
+    $('.result').on('click', function(e) {
+        e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+
+        var formData = {
+            tariff: $('.select').val(),
+            name: $('.name').val(),
+            phone: $('.phone').val(),
+            email: $('.email').val(),
+            schedule: [],
+            time: []
+        };
+        
+        // Добавляем выбранные дни недели в массив
+        $('.modal__week input[name="days"]:checked').each(function() {
+            formData.schedule.push($(this).siblings('input[type="submit"]').val());
+        });
+        
+        // Добавляем выбранное время в массив
+        $('.modal__time input[name="time"]:checked').each(function() {
+            formData.time.push($(this).siblings('input[type="submit"]').val());
+        });
+        
+        // Отправляем данные на сервер с помощью AJAX
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:7070', // Замени это на свой URL
+            data: JSON.stringify(formData), // Отправляем данные в формате JSON
+            contentType: 'application/json',
+            success: function(response) {
+                // Действия при успешной отправке
+                $('.result').html('Данные успешно отправлены!');
+            },
+            error: function(err) {
+                // Действия при ошибке отправки
+                $('.result').html('Произошла ошибка при отправке данных!');
+            }
+        });
+    });
+});
+
 
 
 
