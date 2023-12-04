@@ -19,9 +19,66 @@ $(document).ready(function(){
                 $('.modal__week__item').eq(i).toggleClass('modal__week__item_active');
             });
         });
+        
     };
 
     toggleCheckboxweek ('.modal__week__item');
+
+    $('.item_1').on('click',function(){
+        $('.modal__week__item_1').trigger('click'); 
+        return false;
+    });
+    $('.item_2').on('click',function(){
+        $('.modal__week__item_2').trigger('click'); 
+        return false;
+    });
+    $('.item_3').on('click',function(){
+        $('.modal__week__item_3').trigger('click'); 
+        return false;
+    });
+    $('.item_4').on('click',function(){
+        $('.modal__week__item_4').trigger('click'); 
+        return false;
+    });
+    $('.item_5').on('click',function(){
+        $('.modal__week__item_5').trigger('click'); 
+        return false;
+    });
+    $('.item_6').on('click',function(){
+        $('.modal__week__item_6').trigger('click'); 
+        return false;
+    });
+    $('.item_7').on('click',function(){
+        $('.modal__week__item_7').trigger('click'); 
+        return false;
+    });
+
+    $('.time_1').on('click',function(){
+        $('.modal__time__item_1').trigger('click'); 
+        return false;
+    });
+    $('.time_2').on('click',function(){
+        $('.modal__time__item_2').trigger('click'); 
+        return false;
+    });
+    $('.time_3').on('click',function(){
+        $('.modal__time__item_3').trigger('click'); 
+        return false;
+    });
+    $('.time_4').on('click',function(){
+        $('.modal__time__item_4').trigger('click'); 
+        return false;
+    });
+    $('.time_5').on('click',function(){
+        $('.modal__time__item_5').trigger('click'); 
+        return false;
+    });
+    $('.time_6').on('click',function(){
+        $('.modal__time__item_6').trigger('click'); 
+        return false;
+    });
+    
+    
 
     function toggleCheckboxtime(item) {
         $(item).each(function(i) {
@@ -34,42 +91,47 @@ $(document).ready(function(){
 
     toggleCheckboxtime ('.modal__time__item');
 
-    $('.header__logo').on('click',function() {
-        $('.entrance, #thanks').fadeIn('slow');
-    });
-
-    $('.modal__close').on('click', function() {
-        $('.entrance, #thanks').fadeOut('slow');
-    });
-
     $('.video__play').on('click',function() {
         $('.overplay, #video').fadeIn('slow');
     });
 
     $('.modal__close-video').on('click', function() {
-        $('.overplay, #video').fadeOut('slow');
+        $('.overplay, #video').fadeOut('10');
+        var iframe = document.querySelector('#youtube-iframe');
+        var source = iframe.src;
+        iframe.src = source;
+
     });
 
     $('.btn__header').on('click',function() {
         $('.overlay, #order').fadeIn('slow');
+        $('.header').toggleClass('header_active');
+        document.body.style.overflow = "hidden";
     });
 
     $('.description__btn_promo').on('click',function() {
-        $('.overlay, #order').fadeIn('slow');
+        $('.overlay, #order').fadeIn('slow')
+        $('.header').toggleClass('header_active');
+        document.body.style.overflow = "hidden";
     });
 
     $('.modal__close').on('click', function() {
         $('.overlay, #order').fadeOut('slow');
+        $('.header').removeClass('header_active');
+        document.body.style.overflow = "";
+        
     });
 
 
     $('.button_mini').each(function(i) {
         $(this).on('click',function() {
             $('.overlay, #order').fadeIn('slow');
+            $('.header').toggleClass('header_active');
+            document.body.style.overflow = "hidden";
         });
     });
 
-    jQuery(function($){
+/*     jQuery(function($){
         $(document).mouseup( function(e){ // событие клика по веб-документу
             var div = $( "#order" ); // тут указываем ID элемента
             if ( !div.is(e.target) // если клик был не по нашему блоку
@@ -77,15 +139,13 @@ $(document).ready(function(){
                 $('.overlay, #order').fadeOut('slow');; // скрываем его
             }
         });
-    });
+    }); */
 
     $("a[href=#catalog]").click(function(){
         const _href = $(this).attr("href");
         $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
         return false;
     });
-
-    $('input[name=phn]').mask("+7 (999) 999-9999");
 
     function validateForms(form){
         $(form).validate({
@@ -98,7 +158,14 @@ $(document).ready(function(){
                 email: {
                     required: true,
                     email: true
-                }
+                },
+                days: {
+                    required: true
+                },
+                time: {
+                    required: true
+                },
+
             },
             messages: {
                 name: {
@@ -109,13 +176,47 @@ $(document).ready(function(){
                 email: {
                   required: "Пожалуйста, введите свою почту",
                   email: "Неправильно введен адресс почты"
-                }
+                },
+                days: {
+                    required: "Выберите день",
+                },
+                time: {
+                    required: "Выберите время",
+                },
             }
         });
     };
 
     validateForms('#order form');
     validateForms('.modal__footer form');
+    
+ 
+    $('input[name=phn]').mask("+7 (999) 999-9999");
+
+/*     function checkChooseWeeks($) {
+        var isChoose = false;
+        $('.modal__week__item').each(function(){            
+            if ($(this).hasClass('modal__week__item_active')) {
+                isChoose = true;
+            // Выполнение определенных действий, если класс присутствует
+            } 
+            
+        });
+        return isChoose;
+    }
+
+    $('#check').on('click',function() {
+        checkChooseWeeks('.modal__week__item');        
+        if (checkChooseWeeks()) {
+            alert ("Отправил");
+        } else{
+            alert ("Не отправил");     
+        }
+    }); */
+
+
+    
+
 
     
 
@@ -137,3 +238,5 @@ $(document).ready(function(){
     }); */
 
 });
+
+
