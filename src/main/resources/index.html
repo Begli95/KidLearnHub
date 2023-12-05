@@ -116,17 +116,17 @@
                 Тарифы
             </h2>
             <div class="catalog__content catalog__content_active">
-                <div class="catalog-item">
+                <div id="card1" class="catalog-item">
                     <div class="catalog-item__header">
-                        <h2 class="title catalog-item__title">Пробный урок</h2>
+                        <h2 class="name title catalog-item__title">Пробный урок12</h2>
                     </div>
                     <div class="catalog-item__wrapper">
                         <div class="catalog-item__content catalog-item__content_active ">                  
-                            <div class="catalog-item__price">Бесплатно</div>
-                            <div class="catalog-item__descr">1-2 ученика</div>
-                            <div class="catalog-item__descr">Знакомство</div>
-                            <div class="catalog-item__descr">1 занятие 60 минут</div>
-                            <div class="catalog-item__descr">Индивидульные занятия</div>
+                            <div class="price catalog-item__price">Бесплатно</div>
+                            <div class="max_students catalog-item__descr">1-2 ученика</div>
+                            <div class="period catalog-item__descr">Знакомство</div>
+                            <div class="duration catalog-item__descr">1 занятие 60 минут</div>
+                            <div class="type_of_lessons catalog-item__descr">Индивидульные занятия</div>
                             <a href="" class="catalog-item__link">подробнее</a>
                         </div>
                         <ul class="catalog-item__list ">
@@ -143,17 +143,17 @@
                     </div>
                 </div>
 
-                <div class="catalog-item">
+                <div id="card2" class="catalog-item">
                     <div class="catalog-item__header">
-                        <h2 class="title catalog-item__title">Индивидульно</h2>
+                        <h2 class="name title catalog-item__title">Индивидульно</h2>
                     </div>
                     <div class="catalog-item__wrapper">
                         <div class="catalog-item__content catalog-item__content_active ">                  
-                            <div class="catalog-item__price">6 850 ₽ руб/месяц</div>
-                            <div class="catalog-item__descr">1 ученик</div>
-                            <div class="catalog-item__descr">Месячный абонемент</div>
-                            <div class="catalog-item__descr">4 занятия по 60 минут</div>
-                            <div class="catalog-item__descr">Индивидульные занятия</div>
+                            <div class="price catalog-item__price">6 850 ₽ руб/месяц</div>
+                            <div class="max_students catalog-item__descr">1 ученик</div>
+                            <div class="period catalog-item__descr">Месячный абонемент</div>
+                            <div class="duration catalog-item__descr">4 занятия по 60 минут</div>
+                            <div class="type_of_lessons catalog-item__descr">Индивидульные занятия</div>
                             <a href="" class="catalog-item__link">подробнее</a>
                         </div>
                         <ul class="catalog-item__list ">
@@ -170,17 +170,17 @@
                     </div>
                 </div>
 
-                <div class="catalog-item">
+                <div id="card3" class="catalog-item">
                     <div class="catalog-item__header">
-                        <h2 class="title catalog-item__title">Группа</h2>
+                        <h2 class="name title catalog-item__title">Группа</h2>
                     </div>
-                    <div class="catalog-item__wrapper">
+                    <div  class="catalog-item__wrapper">
                         <div class="catalog-item__content catalog-item__content_active ">                  
-                            <div class="catalog-item__price">5 500 ₽ руб/месяц</div>
-                            <div class="catalog-item__descr">От 2-х до 4-х учеников</div>
-                            <div class="catalog-item__descr">Месячный абонемент</div>
-                            <div class="catalog-item__descr">4 занятия по 60 минут</div>
-                            <div class="catalog-item__descr">Индивидульные занятия</div>
+                            <div class="price catalog-item__price">5 500 ₽ руб/месяц</div>
+                            <div class="max_students catalog-item__descr">От 2-х до 4-х учеников</div>
+                            <div class="period catalog-item__descr">Месячный абонемент</div>
+                            <div class="duration catalog-item__descr">4 занятия по 60 минут</div>
+                            <div class="type_of_lessons catalog-item__descr">Индивидульные занятия</div>
                             <a href="" class="catalog-item__link">подробнее</a>
                         </div>
                         <ul class="catalog-item__list ">
@@ -348,9 +348,12 @@
             <div class="modal__descr">Закройте это окошко и поробуйте еще раз!</div>
         </div>
     </div>
-    
 
-
+    <script src="js/cardsData.js" ></script>
+    <script>
+        var jsonData = 'DATA';
+        processJsonData(jsonData);
+    </script>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>

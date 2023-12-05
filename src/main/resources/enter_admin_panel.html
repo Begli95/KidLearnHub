@@ -10,13 +10,13 @@
 <body class="description__full">
     <div class="entrance">
         <div class="modal modal_mini" id='thanks'>
-            <div class="modal__subtitle">Вход для администратора:</div>
-            <form class="feed-form feed-form_mt25" action="#">
-                <input class="feed-form__input" name="login" placeholder="Ваш логин" type="text">
-                <input class="feed-form__input"  name="password" placeholder="Пароль" type="text" >
-                <a class=" btn button_entrance entrance__src " href="admin_panel.html">Вход</a>
+            <div class="modal__subtitle">Администратор</div>
+            <form class="feed-form feed-form_mt25" action="/admin" method="post">
+                <input class="feed-form__input" name="login" placeholder="Ваш логин" type="email">
+                <input class="feed-form__input"  name="password" placeholder="Пароль" type="password" >
+                <a class=" btn button_entrance entrance__src " href="admin_panel.html" type="submit">Вход</a>
             </form>
-            
+            <a href="/">домой</a>
         </div> 
     </div>
 

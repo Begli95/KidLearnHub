@@ -1,7 +1,5 @@
 package com.kidlearnhub.controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kidlearnhub.service.RenderHtmlFile;
 import com.kidlearnhub.service.UtilityService;
 import io.javalin.http.Handler;
@@ -13,7 +11,7 @@ import java.sql.*;
 
 public class HomePageController {
     public static Handler homeHandler = ctx -> {
-        String existingHtml = RenderHtmlFile.render("templates/main_page.html");
+        String existingHtml = RenderHtmlFile.render("index.html");
         try {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/KidLearnHubDB", "postgres", "root");
 
@@ -88,7 +86,6 @@ public class HomePageController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Обработка ошибок при вставке данных
         }
     };
 }
