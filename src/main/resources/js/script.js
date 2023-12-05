@@ -117,6 +117,7 @@ $(document).ready(function(){
 
     $('.modal__close').on('click', function() {
         $('.overlay, #order').fadeOut('slow');
+        $('.thank, #thanks').fadeOut('slow');
         $('.header').removeClass('header_active');
         document.body.style.overflow = "";
         
@@ -257,7 +258,8 @@ $(document).ready(function() {
             success: function(response) {
                 // Действия при успешной отправке
                 $('.result').html('Данные успешно отправлены!');
-                $('.overlay, #order').fadeOut();
+                $('.overlay, #order').fadeOut('slow');
+                $('.thank, #thanks').fadeIn('slow');
             },
             error: function(err) {
                 // Действия при ошибке отправки
@@ -268,7 +270,10 @@ $(document).ready(function() {
     });
 
     $('#check').on('click',function(){
-        $('.result').trigger('click'); 
+        $('.result').trigger('click');
+        
+        
+         
     });
 });
 

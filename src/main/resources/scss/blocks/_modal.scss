@@ -1,4 +1,4 @@
-.overlay,.overplay {
+.overlay,.overplay,.thank {
     display: none;
     position: fixed;
     width: 100%;
@@ -131,6 +131,9 @@
         opacity: 0;
         z-index: -2;
 
+    }
+    .result {
+        display: none;
     }
 }
 
