@@ -18,6 +18,9 @@
     margin: 20px auto 0;
     text-decoration: none;
 }
+.entrance_href {
+    text-decoration: none;
+}
 
 .modal {
     position: absolute;
@@ -40,6 +43,7 @@
 
     &_mini {
         min-height: 150px;
+        text-align: center;
     }
 
     &__video {
