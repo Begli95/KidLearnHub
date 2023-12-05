@@ -258,7 +258,7 @@ $(document).ready(function() {
         // Отправляем данные на сервер с помощью AJAX
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:7070/request', // Замени это на свой URL
+            url: 'http://localhost:7070/requestClient', // Замени это на свой URL
             data: JSON.stringify(formData), // Отправляем данные в формате JSON
             contentType: 'application/json',
             success: function(response) {
@@ -289,6 +289,117 @@ $(document).ready(function() {
          
     });
 });
+
+
+
+$(document).ready(function(){
+    function validateForm(form){
+        $(form).validate({
+            rules: {
+                title: {
+                    required: true,
+                },
+                price: {
+                    required: true,
+                },                    
+                quantity: {
+                    required: true,
+                },
+                period: {
+                    required: true
+                },
+                duration: {
+                    required: true
+                },
+                type: {
+                    required: true
+                },
+            },
+            messages: {
+                title: {
+                    required: '',
+                },
+                price: {
+                    required: '',
+                },                    
+                quantity: {
+                    required: '',
+                },
+                period: {
+                    required: '',
+                },
+                duration: {
+                    required: '',
+                },
+                type: {
+                    required: '',
+                },
+            }
+        });
+        return $(form).valid(); // Возвращаем результат валидации для последующей проверки
+    }
+
+    $('.button_request').on('click', function(){
+        var forms = $('.panel-box-item__content form');
+        var allValid = true;
+
+        forms.each(function(){
+            if(!validateForm(this)){
+                allValid = false;
+            }
+        });
+
+        if(allValid){
+            // Здесь можно добавить код для отправки форм, если они все прошли валидацию
+            console.log('Все формы валидны. Можно отправлять данные.');
+        } else {
+            console.log('Есть невалидные формы. Пожалуйста, исправьте ошибки.');
+        }
+    });
+
+    $('.button_request').on('click', function(){
+        var forms = $('.panel-box-item__content form');
+        var allValid = true;
+        var formDataArray = [];
+
+        forms.each(function(){
+            if(!validateForm(this)){
+                allValid = false;
+            } else {
+                var formData = $(this).serializeArray();
+                var jsonData = {};
+
+                formData.forEach(function(field){
+                    jsonData[field.name] = field.value;
+                });
+
+                formDataArray.push(jsonData);
+            }
+            console.log(JSON.stringify(formDataArray, null, 2));
+        });
+
+        if(allValid){
+            // Отправка данных на сервер
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:7070/requestTariffs',
+                data: JSON.stringify(formDataArray),
+                contentType: 'application/json',
+                success: function(response){
+                    console.log('Данные успешно отправлены на сервер.', response);
+                    // Добавьте здесь любую логику обработки успешного ответа сервера
+                },
+                error: function(error){
+                    console.error('Ошибка при отправке данных на сервер.', error);
+                    // Добавьте здесь обработку ошибки отправки на сервер
+                }
+            });
+        } else {
+            console.log('Есть невалидные формы. Пожалуйста, исправьте ошибки.');
+        }
+    });
+});
+
 
 
 
