@@ -214,8 +214,11 @@ $(document).ready(function(){
 
 });
 
+
+
+
 $(document).ready(function() {
-    $('.result').on('click', function(e) {
+    $('#check').on('click', function(e) {
         e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
 
         var formData = {
@@ -272,22 +275,121 @@ $(document).ready(function() {
             }
             
         });
+            // ваш AJAX запрос и отправка данных на сервер остаются теми же
     });
 
-    $('#check').on('click',function(){
-        $('.result').trigger('click');
+    $('#check').on('click', function() {
+        // При клике на кнопку #check запускаем валидацию
+        var formsValid = true; // Переменная для отслеживания валидности всех форм
+
         validateForms('#order form');
         validateForms('.modal__footer form');
-        
-        
-         
+
+        // Проверяем, прошли ли все формы валидацию
+        $('.panel-box-item__content form').each(function() {
+            if (!$(this).valid()) {
+                formsValid = false;
+                return false; // Прерываем цикл, если хотя бы одна форма невалидна
+            }
+        });
+
+        if (formsValid) {
+            // Если все формы валидны, отправляем данные на сервер
+            $('.result').trigger('click');
+        } else {
+            // Если есть невалидные формы, показываем сообщение об ошибке
+            $('.errors, #errorses').fadeIn('slow');
+        }
     });
-    $('#check').on('click',function(e){
+});
+
+
+$(document).ready(function() {
+    $('#sending-check').on('click', function(e) {
+        e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+
+        var formData = {
+            tariff: $('.select').val(),
+            name: $('.names').val(),
+            phone: $('.phone').val(),
+            email: $('.email').val(),
+            schedule: [],
+            time: []
+        };
         
+        // Добавляем выбранные дни недели в массив
+        $('.modal__week input[name="days"]').each(function() {
+            // Проверяем, выбран ли чекбокс
+            if ($(this).is(':checked')) {
+                // Если выбран, добавляем значение соответствующего дня недели в массив
+                var dayOfWeek = $(this).nextAll('input[name="week"]').first().val();
+                formData.schedule.push(dayOfWeek);
+                
+            }
+        });
+        /* // Добавляем выбранные дни недели в массив
+        $('.modal__week__item_active').each(function() {
+            formData.schedule.push($(this).siblings('.modal__week__item_active').val());
+        }); */
         
+        // Добавляем выбранное время в массив
+        $('.modal__time input[name="time"]:checked').each(function() {
+            if ($(this).is(':checked')) {
+                // Если выбран, добавляем значение соответствующего дня недели в массив
+                var dayOfTime = $(this).nextAll('.modal__time__item').first().val();
+                formData.time.push(dayOfTime);
+            }
+        });
+
+        var jsonData = JSON.stringify(formData);
+
+        console.log('JSON данных:', jsonData);
         
-         
+        // Отправляем данные на сервер с помощью AJAX
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:7070/requestClient', // Замени это на свой URL
+            data: JSON.stringify(formData), // Отправляем данные в формате JSON
+            contentType: 'application/json',
+            success: function(response) {
+                // Действия при успешной отправке
+                $('.overlay, #order').fadeOut('slow');
+                $('.thank, #thanks').fadeIn('slow');
+            },
+            error: function(err) {
+                // Действия при ошибке отправки
+                $('.errors, #errorses').fadeIn('slow');
+            }
+            
+        });
+            // ваш AJAX запрос и отправка данных на сервер остаются теми же
     });
+
+    $('#sending-check').on('click', function() {
+        // При клике на кнопку #check запускаем валидацию
+        var formsValid = true; // Переменная для отслеживания валидности всех форм
+
+        validateForms('#order form');
+        validateForms('.modal__footer form');
+
+        // Проверяем, прошли ли все формы валидацию
+        $('.panel-box-item__content form').each(function() {
+            if (!$(this).valid()) {
+                formsValid = false;
+                return false; // Прерываем цикл, если хотя бы одна форма невалидна
+            }
+        });
+
+        if (formsValid) {
+            // Если все формы валидны, отправляем данные на сервер            
+            $('.thank, #thanks').fadeIn('slow');
+        } else {
+            // Если есть невалидные формы, показываем сообщение об ошибке
+            $('.errors, #errorses').fadeIn('slow');
+  
+        }
+    });
+     
 });
 
 
