@@ -165,6 +165,12 @@ $(document).ready(function(){
                 time: {
                     required: true
                 },
+                weeks: {
+                    required: true
+                },
+                times: {
+                    required: true
+                },
 
             },
             messages: {
@@ -183,6 +189,12 @@ $(document).ready(function(){
                 time: {
                     required: "Выберите время",
                 },
+                weeks: {
+                    required: "Выберите день",
+                },
+                times: {
+                    required: "Выберите время",
+                },
             }
         });
     };
@@ -193,26 +205,6 @@ $(document).ready(function(){
  
     $('input[name=phn]').mask("+7 (999) 999-9999");
 
-
-    /* $('form').submit(function(e) {
-        e.preventDefault();
-
-        if (!$(this).valid()){
-            return;
-        };
-
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:7070",
-            data: $(this).serialize()
-        }).done(function() {
-            $(this).find("input").val("");
-            $('form').trigger('reset');
-            $('#consultation, #order').fadeOut();
-        });
-        return false;
-    }); */
- 
 
 });
 
@@ -230,14 +222,31 @@ $(document).ready(function() {
         };
         
         // Добавляем выбранные дни недели в массив
-        $('.modal__week input[name="days"]:checked').each(function() {
-            formData.schedule.push($(this).siblings('input[type="submit"]').val());
+        $('.modal__week input[name="days"]').each(function() {
+            // Проверяем, выбран ли чекбокс
+            if ($(this).is(':checked')) {
+                // Если выбран, добавляем значение соответствующего дня недели в массив
+                var dayOfWeek = $(this).nextAll('input[name="week"]').first().val();
+                formData.schedule.push(dayOfWeek);
+            }
         });
+        /* // Добавляем выбранные дни недели в массив
+        $('.modal__week__item_active').each(function() {
+            formData.schedule.push($(this).siblings('.modal__week__item_active').val());
+        }); */
         
         // Добавляем выбранное время в массив
         $('.modal__time input[name="time"]:checked').each(function() {
-            formData.time.push($(this).siblings('input[type="submit"]').val());
+            if ($(this).is(':checked')) {
+                // Если выбран, добавляем значение соответствующего дня недели в массив
+                var dayOfTime = $(this).nextAll('.modal__time__item').first().val();
+                formData.time.push(dayOfTime);
+            }
         });
+
+        var jsonData = JSON.stringify(formData);
+
+        console.log('JSON данных:', jsonData);
         
         // Отправляем данные на сервер с помощью AJAX
         $.ajax({
@@ -248,12 +257,18 @@ $(document).ready(function() {
             success: function(response) {
                 // Действия при успешной отправке
                 $('.result').html('Данные успешно отправлены!');
+                $('.overlay, #order').fadeOut();
             },
             error: function(err) {
                 // Действия при ошибке отправки
                 $('.result').html('Произошла ошибка при отправке данных!');
             }
+            
         });
+    });
+
+    $('#check').on('click',function(){
+        $('.result').trigger('click'); 
     });
 });
 
