@@ -220,7 +220,7 @@ $(document).ready(function() {
 
         var formData = {
             tariff: $('.select').val(),
-            name: $('.name').val(),
+            name: $('.names').val(),
             phone: $('.phone').val(),
             email: $('.email').val(),
             schedule: [],
@@ -258,7 +258,7 @@ $(document).ready(function() {
         // Отправляем данные на сервер с помощью AJAX
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:7070', // Замени это на свой URL
+            url: 'http://localhost:7070/request', // Замени это на свой URL
             data: JSON.stringify(formData), // Отправляем данные в формате JSON
             contentType: 'application/json',
             success: function(response) {
@@ -283,7 +283,7 @@ $(document).ready(function() {
          
     });
     $('#check').on('click',function(e){
-        e.preventDefault();
+        
         
         
          
