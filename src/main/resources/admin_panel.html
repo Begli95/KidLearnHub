@@ -38,99 +38,18 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Почта</th>
                                 <th>Имя</th>
                                 <th>Телефон</th>
-                                <th>Тариф</th>
+                                <th>Почта</th>
                                 <th>Дни недели</th>
                                 <th>Время занятий</th>
+                                <th>Тариф</th>
                             </tr>
                         </thead>
                     </table>	
-                    <div class="scroll-table-body">
+                    <div id="clients" class="scroll-table-body">
                         <table>
-                            <tbody>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-                                <tr>
-                                    <td>Азу</td>
-                                    <td>11,9</td>
-                                    <td>14,2</td>
-                                    <td>10,2</td>
-                                    <td>214</td>
-                                    <td>214</td>
-                                </tr>
-
+                            <tbody class="your-table-tbody">
                             </tbody>
                         </table>
                     </div>	
@@ -139,7 +58,7 @@
             </div>
         </div>
     </section>
-
+    <!--DATA-->
     <section id="panel-box" class="panel-box">
         <div class="container">
             <h2 class="title title__catalog">
@@ -158,19 +77,9 @@
                             <input name="type" class="panel-box-item__descr" type="text" placeholder="Тип занятия"> 
                         </div>
                     </div>
-                </div>
-
-                <div class="panel-box-item">
-                    <div class="panel-box-item__wrapper">
-                        <div class="panel-box-item__content ">    
-                            <input name="title" class="panel-box-item__descr" type="text" placeholder="Название">               
-                            <input name="
-                            price" class="panel-box-item__descr" type="text" placeholder="Стоимость"> 
-                            <input name="quantity" class="panel-box-item__descr" type="text" placeholder="Количество учеников в группе"> 
-                            <input name="period" class="panel-box-item__descr" type="text" placeholder="Срок реализации"> 
-                            <input name="duration" class="panel-box-item__descr" type="text" placeholder="Длительность занятия"> 
-                            <input name="type" class="panel-box-item__descr" type="text" placeholder="Тип занятия"> 
-                        </div>
+                    <hr>
+                    <div class="panel-box-item__footer">
+                        <button class="btn button_mini">Сохранить</button>
                     </div>
                 </div>
 
@@ -186,20 +95,43 @@
                             <input name="type" class="panel-box-item__descr" type="text" placeholder="Тип занятия"> 
                         </div>
                     </div>
+                    <hr>
+                    <div class="panel-box-item__footer">
+                        <button class="btn button_mini">Сохранить</button>
+                    </div>
                 </div>
-            </div>
-            <div class="panel-box-item__footer">
-                <button class="btn button_mini">Заменить</button>
+
+                <div class="panel-box-item">
+                    <div class="panel-box-item__wrapper">
+                        <div class="panel-box-item__content ">    
+                            <input name="title" class="panel-box-item__descr" type="text" placeholder="Название">               
+                            <input name="
+                            price" class="panel-box-item__descr" type="text" placeholder="Стоимость"> 
+                            <input name="quantity" class="panel-box-item__descr" type="text" placeholder="Количество учеников в группе"> 
+                            <input name="period" class="panel-box-item__descr" type="text" placeholder="Срок реализации"> 
+                            <input name="duration" class="panel-box-item__descr" type="text" placeholder="Длительность занятия"> 
+                            <input name="type" class="panel-box-item__descr" type="text" placeholder="Тип занятия"> 
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="panel-box-item__footer">
+                        <button class="btn button_mini">Сохранить</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    
-
+    <script src="js/clientsData.js" ></script>
+    <script>
+        var jsonData = 'DATA';
+        processJsonData(jsonData);
+    </script>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/jquery.maskedinput.min.js"></script>
     <script src="js/script.js"></script>
+
 </body>
 </html>
