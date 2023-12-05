@@ -123,6 +123,11 @@ $(document).ready(function(){
         
     });
 
+    $('.modal__close-error').on('click', function() {
+        $('.errors, #errorses').fadeOut('slow');
+       
+    });
+
 
     $('.button_mini').each(function(i) {
         $(this).on('click',function() {
@@ -181,8 +186,8 @@ $(document).ready(function(){
                 },
                 phn: "Пожалуйста, введите свой номер",
                 email: {
-                  required: "Пожалуйста, введите свою почту",
-                  email: "Неправильно введен адресс почты"
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введен адресс почты"
                 },
                 days: {
                     required: "Выберите день",
@@ -229,6 +234,7 @@ $(document).ready(function() {
                 // Если выбран, добавляем значение соответствующего дня недели в массив
                 var dayOfWeek = $(this).nextAll('input[name="week"]').first().val();
                 formData.schedule.push(dayOfWeek);
+                
             }
         });
         /* // Добавляем выбранные дни недели в массив
@@ -257,13 +263,12 @@ $(document).ready(function() {
             contentType: 'application/json',
             success: function(response) {
                 // Действия при успешной отправке
-                $('.result').html('Данные успешно отправлены!');
                 $('.overlay, #order').fadeOut('slow');
                 $('.thank, #thanks').fadeIn('slow');
             },
             error: function(err) {
                 // Действия при ошибке отправки
-                $('.result').html('Произошла ошибка при отправке данных!');
+                $('.errors, #errorses').fadeIn('slow');
             }
             
         });
@@ -271,6 +276,14 @@ $(document).ready(function() {
 
     $('#check').on('click',function(){
         $('.result').trigger('click');
+        validateForms('#order form');
+        validateForms('.modal__footer form');
+        
+        
+         
+    });
+    $('#check').on('click',function(e){
+        e.preventDefault();
         
         
          

@@ -1,4 +1,4 @@
-.overlay,.overplay,.thank {
+.overlay,.overplay,.thank,.errors {
     display: none;
     position: fixed;
     width: 100%;
@@ -47,7 +47,7 @@
         background: none;
         text-align: center;
     }
-    &__close, &__close-video {
+    &__close, &__close-video, &__close-error {
         position: absolute;
         top: 0;
         right: -40px;
