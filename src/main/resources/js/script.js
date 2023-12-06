@@ -263,6 +263,8 @@ $(document).ready(function() {
                     // Добавьте здесь любую логику обработки успешного ответа сервера
                     $('.thank, #thanks').fadeIn('slow');
                     $('#order form')[0].reset();
+                    $('input[type="checkbox"]').prop('disabled', true);
+                    $('.modal__time__item').removeClass('modal__time__item_active');
                     
                 },
                 error: function(error){
@@ -382,6 +384,8 @@ $(document).ready(function() {
                     // Добавьте здесь любую логику обработки успешного ответа сервера
                     $('.thank, #thanks').fadeIn('slow');
                     $('.modal__footer form')[0].reset();
+                    $('input[type="checkbox"]').prop('disabled', true);
+                    $('.modal__time__item').removeClass('modal__time__item_active');
                     
                 },
                 error: function(error){
