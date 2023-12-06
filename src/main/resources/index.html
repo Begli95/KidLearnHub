@@ -204,16 +204,16 @@
         <div class="container">
             <div  class="modal modal__footer">
                 <div class="modal__subtitle">Ваш тариф:</div>
-                <form id="complected" class="feed-form feed-form_mt25" action="#">
-                    <select class="select">
+                <form class="feed-form feed-form_mt25" action="#">
+                    <select class="select select-footer">
                         <option class="modal__descr" value="s0" disabled>Выберите тариф</option>
                         <option class="modal__descr" value="Пробный урок">Пробный урок</option>
                         <option class="modal__descr" value="Индивидуально">Индивидуально</option>
                         <option class="modal__descr" value="Группа">Группа</option>
                     </select>
-                    <input class="feed-form__input names" name="name" placeholder="Ваше имя" type="text">
-                    <input class="feed-form__input phone"  name="phn" placeholder="Ваш телефон" >
-                    <input class="feed-form__input email"  name="email" placeholder="Ваш E-mail" type="email">
+                    <input class="feed-form__input names-footer" name="name" placeholder="Ваше имя" type="text">
+                    <input class="feed-form__input phone-footer"  name="phn" placeholder="Ваш телефон" >
+                    <input class="feed-form__input email-footer"  name="email" placeholder="Ваш E-mail" type="email">
                     <h2 class="title modal__title ">Желаемое расписание</h2>
                     <div class="modal__week">
                         <input name="weeks" type="checkbox" class="checkbox modal__week__item_1">
@@ -246,9 +246,8 @@
                         <input class="modal__time__item time_5" type="submit" value="19:00-20:00">
                         <input name="times" type="checkbox" class="checkbox modal__time__item_6">
                         <input class="modal__time__item time_6" type="submit" value="20:00-21:00">
-                    </div>
-                    
-                    <button id="sending-check" class="btn button_submit">Записаться</button>
+                    </div>                
+                    <button id="checkValidFormFooter" class="btn button_submit" type="submit">Записаться</button>
                 </form>
             </div>
         </div>
@@ -279,51 +278,49 @@
             <div class="modal__close">&times;</div>
             <div class="modal__subtitle">Ваш тариф:</div>
             <form class="feed-form feed-form_mt25" action="#">
-                <select class="select">
+                <select class="select select-modal">
                     <option class="modal__descr" value="s0" disabled>Выберите тариф</option>
                     <option class="modal__descr" value="Пробный урок">Пробный урок</option>
                     <option class="modal__descr" value="Индивидуально">Индивидуально</option>
                     <option class="modal__descr" value="Группа">Группа</option>
                 </select>
-                <input class="feed-form__input names" name="name" placeholder="Ваше имя" type="text">
-                <input class="feed-form__input phone"  name="phn" placeholder="Ваш телефон" >
-                <input class="feed-form__input email"  name="email" placeholder="Ваш E-mail" type="email">
+                <input class="feed-form__input names-modal" name="name" placeholder="Ваше имя" type="text">
+                <input class="feed-form__input phone-modal"  name="phn" placeholder="Ваш телефон" >
+                <input class="feed-form__input email-modal"  name="email" placeholder="Ваш E-mail" type="email">
                 <h2 class="title modal__title ">Желаемое расписание</h2>
                 <div class="modal__week">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_1">
-                    <input name="week" class="modal__week__item item_1" type="submit" value="ПН">
+                    <input name="week-modal" class="modal__week__item item_1" type="submit" value="ПН">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_2">
-                    <input name="week" class="modal__week__item item_2" type="submit" value="ВТ">
+                    <input name="week-modal" class="modal__week__item item_2" type="submit" value="ВТ">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_3">
-                    <input name="week" class="modal__week__item item_3" type="submit" value="СР">
+                    <input name="week-modal" class="modal__week__item item_3" type="submit" value="СР">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_4">
-                    <input name="week" class="modal__week__item item_4" type="submit" value="ЧТ">
+                    <input name="week-modal" class="modal__week__item item_4" type="submit" value="ЧТ">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_5">
-                    <input name="week" class="modal__week__item item_5" type="submit" value="ПТ">
+                    <input name="week-modal" class="modal__week__item item_5" type="submit" value="ПТ">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_6">
-                    <input name="week" class="modal__week__item item_6" type="submit" value="СБ">
+                    <input name="week-modal" class="modal__week__item item_6" type="submit" value="СБ">
                     <input name="days" type="checkbox" class="checkbox modal__week__item_7">
-                    <input name="week" class="modal__week__item item_7" type="submit" value="ВС">
+                    <input name="week-modal" class="modal__week__item item_7" type="submit" value="ВС">
                 </div>
 
                 <h2 class="title modal__title">Время занятий</h2>
                 <div class="modal__time">
                     <input name="time" type="checkbox" class="checkbox modal__time__item_1">
-                    <input class="modal__time__item time_1" type="submit" value="15:00-16:00">
+                    <input name="time-modal" class="modal__time__item time_1" type="submit" value="15:00-16:00">
                     <input name="time" type="checkbox" class="checkbox modal__time__item_2">
-                    <input class="modal__time__item time_2" type="submit" value="16:00-17:00">
+                    <input name="time-modal" class="modal__time__item time_2" type="submit" value="16:00-17:00">
                     <input name="time" type="checkbox" class="checkbox modal__time__item_3">
-                    <input class="modal__time__item time_3" type="submit" value="17:00-18:00">
+                    <input name="time-modal" class="modal__time__item time_3" type="submit" value="17:00-18:00">
                     <input name="time" type="checkbox" class="checkbox modal__time__item_4">
-                    <input class="modal__time__item time_4" type="submit" value="18:00-19:00">
+                    <input name="time-modal" class="modal__time__item time_4" type="submit" value="18:00-19:00">
                     <input name="time" type="checkbox" class="checkbox modal__time__item_5">
-                    <input class="modal__time__item time_5" type="submit" value="19:00-20:00">
+                    <input name="time-modal" class="modal__time__item time_5" type="submit" value="19:00-20:00">
                     <input name="time" type="checkbox" class="checkbox modal__time__item_6">
-                    <input class="modal__time__item time_6" type="submit" value="20:00-21:00">
-                </div>
-                
-                <button id="check" class="btn button_submit" type="submit">Записаться</button>
-                <button class="result">Проверить JSON</button>
+                    <input name="time-modal" class="modal__time__item time_6" type="submit" value="20:00-21:00">
+                </div>                
+                <button id="checkValidForm" class="btn button_submit" type="submit">Записаться</button>
             </form>
         </div>     
     </div>
