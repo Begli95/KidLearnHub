@@ -153,6 +153,16 @@ $(document).ready(function(){
         return false;
     });
 
+    
+
+
+});
+
+
+
+
+$(document).ready(function() {
+
     function validateForms(form){
         $(form).validate({
             rules: {
@@ -169,12 +179,6 @@ $(document).ready(function(){
                     required: true
                 },
                 time: {
-                    required: true
-                },
-                weeks: {
-                    required: true
-                },
-                times: {
                     required: true
                 },
 
@@ -195,6 +199,41 @@ $(document).ready(function(){
                 time: {
                     required: "Выберите время",
                 },
+            }
+        });
+    };
+
+
+    function validateFormer(form){
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phn:'required',
+                email: {
+                    required: true,
+                    email: true
+                },
+                weeks: {
+                    required: true
+                },
+                times: {
+                    required: true
+                },
+
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите свое имя",
+                    minlength: jQuery.validator.format("Введите {0} символа!")
+                },
+                phn: "Пожалуйста, введите свой номер",
+                email: {
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введен адресс почты"
+                },
                 weeks: {
                     required: "Выберите день",
                 },
@@ -206,21 +245,15 @@ $(document).ready(function(){
     };
 
     validateForms('#order form');
-    validateForms('.modal__footer form');
-    
+    validateFormer('.modal__footer form');
  
     $('input[name=phn]').mask("+7 (999) 999-9999");
 
 
-});
 
-
-
-
-$(document).ready(function() {
     $('#check').on('click', function(e) {
         e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
-
+        validateForms('#order form');
         var formData = {
             tariff: $('.select').val(),
             name: $('.names').val(),
@@ -283,7 +316,7 @@ $(document).ready(function() {
         var formsValid = true; // Переменная для отслеживания валидности всех форм
 
         validateForms('#order form');
-        validateForms('.modal__footer form');
+        
 
         // Проверяем, прошли ли все формы валидацию
         $('.panel-box-item__content form').each(function() {
@@ -301,13 +334,13 @@ $(document).ready(function() {
             $('.errors, #errorses').fadeIn('slow');
         }
     });
-});
 
 
-$(document).ready(function() {
+
+
     $('#sending-check').on('click', function(e) {
         e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
-
+        validateFormer('.modal__footer form');
         var formData = {
             tariff: $('.select').val(),
             name: $('.names').val(),
@@ -365,30 +398,7 @@ $(document).ready(function() {
             // ваш AJAX запрос и отправка данных на сервер остаются теми же
     });
 
-    $('#sending-check').on('click', function() {
-        // При клике на кнопку #check запускаем валидацию
-        var formsValid = true; // Переменная для отслеживания валидности всех форм
-
-        validateForms('#order form');
-        validateForms('.modal__footer form');
-
-        // Проверяем, прошли ли все формы валидацию
-        $('.panel-box-item__content form').each(function() {
-            if (!$(this).valid()) {
-                formsValid = false;
-                return false; // Прерываем цикл, если хотя бы одна форма невалидна
-            }
-        });
-
-        if (formsValid) {
-            // Если все формы валидны, отправляем данные на сервер            
-            $('.thank, #thanks').fadeIn('slow');
-        } else {
-            // Если есть невалидные формы, показываем сообщение об ошибке
-            $('.errors, #errorses').fadeIn('slow');
-  
-        }
-    });
+    
      
 });
 
@@ -490,6 +500,7 @@ $(document).ready(function(){
                 success: function(response){
                     console.log('Данные успешно отправлены на сервер.', response);
                     // Добавьте здесь любую логику обработки успешного ответа сервера
+                    alert('Данные успешно отправлены на сервер');
                 },
                 error: function(error){
                     console.error('Ошибка при отправке данных на сервер.', error);
