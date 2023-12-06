@@ -201,10 +201,87 @@ $(document).ready(function() {
                 },
             }
         });
+        return $(form).valid();
     };
+      
+    $('input[name=phn]').mask("+7 (999) 999-9999");
+
+    $('#checkValidForm').on('click', function(e){
+        e.preventDefault();
+    });
+    
+    $('#checkValidForm').on('click', function(){
+         
+        var forms = $('#order form');
+        var allValid = true;
+        var formDataArray = {
+            tariff: $('.select-modal').val(),
+            name: $('.names-modal').val(),
+            phone: $('.phone-modal').val(),
+            email: $('.email-modal').val(),
+            schedule: [],
+            time: []
+        };
+
+        // Добавляем выбранные дни недели в массив
+        $('.modal__week input[name="days"]').each(function() {
+            // Проверяем, выбран ли чекбокс
+            if ($(this).is(':checked')) {
+                // Если выбран, добавляем значение соответствующего дня недели в массив
+                var dayOfWeek = $(this).nextAll('input[name="week-modal"]').first().val();
+                formDataArray.schedule.push(dayOfWeek);
+                
+            }
+        });
+        
+        // Добавляем выбранное время в массив
+        $('.modal__time input[name="time"]:checked').each(function() {
+            if ($(this).is(':checked')) {
+                // Если выбран, добавляем значение соответствующего дня недели в массив
+                var dayOfTime = $(this).nextAll('input[name="time-modal"]').first().val();
+                formDataArray.time.push(dayOfTime);
+            }
+        });
 
 
-    function validateFormer(form){
+        forms.each(function(){
+            if(!validateForms(this)){
+                allValid = false;
+            } 
+            console.log(JSON.stringify(formDataArray, null, 2));
+        });
+
+        if(allValid){
+            // Отправка данных на сервер
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:7070/requestClient',
+                data: JSON.stringify(formDataArray),
+                contentType: 'application/json',
+                success: function(response){
+                    console.log('Данные успешно отправлены на сервер.', response);
+                    // Добавьте здесь любую логику обработки успешного ответа сервера
+                    $('.thank, #thanks').fadeIn('slow');
+                    
+                },
+                error: function(error){
+                    console.error('Ошибка при отправке данных на сервер.', error);
+                    // Добавьте здесь обработку ошибки отправки на сервер
+                    $('.errors, #errorses').fadeIn('slow');
+                }
+            });
+        } else {
+            console.log('Есть невалидные формы. Пожалуйста, исправьте ошибки.');
+        }
+    });
+     
+});
+
+
+
+$(document).ready(function() {
+
+    function validateForms(form){
         $(form).validate({
             rules: {
                 name: {
@@ -242,165 +319,83 @@ $(document).ready(function() {
                 },
             }
         });
+        return $(form).valid();
     };
-
-    validateForms('#order form');
-    validateFormer('.modal__footer form');
- 
+      
     $('input[name=phn]').mask("+7 (999) 999-9999");
 
-
-
-    $('#check').on('click', function(e) {
-        e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
-        validateForms('#order form');
-        var formData = {
-            tariff: $('.select').val(),
-            name: $('.names').val(),
-            phone: $('.phone').val(),
-            email: $('.email').val(),
+    $('#checkValidFormFooter').on('click', function(e){
+        e.preventDefault();
+    });
+    
+    $('#checkValidFormFooter').on('click', function(){
+         
+        var forms = $('.modal__footer form');
+        var allValid = true;
+        var formDataArray = {
+            tariff: $('.select-footer').val(),
+            name: $('.names-footer').val(),
+            phone: $('.phone-footer').val(),
+            email: $('.email-footer').val(),
             schedule: [],
             time: []
         };
-        
+
         // Добавляем выбранные дни недели в массив
-        $('.modal__week input[name="days"]').each(function() {
+        $('.modal__week input[name="weeks"]').each(function() {
             // Проверяем, выбран ли чекбокс
             if ($(this).is(':checked')) {
                 // Если выбран, добавляем значение соответствующего дня недели в массив
                 var dayOfWeek = $(this).nextAll('input[name="week"]').first().val();
-                formData.schedule.push(dayOfWeek);
+                formDataArray.schedule.push(dayOfWeek);
                 
             }
         });
-        /* // Добавляем выбранные дни недели в массив
-        $('.modal__week__item_active').each(function() {
-            formData.schedule.push($(this).siblings('.modal__week__item_active').val());
-        }); */
         
         // Добавляем выбранное время в массив
         $('.modal__time input[name="time"]:checked').each(function() {
             if ($(this).is(':checked')) {
                 // Если выбран, добавляем значение соответствующего дня недели в массив
                 var dayOfTime = $(this).nextAll('.modal__time__item').first().val();
-                formData.time.push(dayOfTime);
+                formDataArray.time.push(dayOfTime);
             }
         });
 
-        var jsonData = JSON.stringify(formData);
 
-        console.log('JSON данных:', jsonData);
-        
-        // Отправляем данные на сервер с помощью AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:7070/requestClient', // Замени это на свой URL
-            data: JSON.stringify(formData), // Отправляем данные в формате JSON
-            contentType: 'application/json',
-            success: function(response) {
-                // Действия при успешной отправке
-                $('.overlay, #order').fadeOut('slow');
-                $('.thank, #thanks').fadeIn('slow');
-            },
-            error: function(err) {
-                // Действия при ошибке отправки
-                $('.errors, #errorses').fadeIn('slow');
-            }
-            
-        });
-            // ваш AJAX запрос и отправка данных на сервер остаются теми же
-    });
-
-    $('#check').on('click', function() {
-        // При клике на кнопку #check запускаем валидацию
-        var formsValid = true; // Переменная для отслеживания валидности всех форм
-
-        validateForms('#order form');
-        
-
-        // Проверяем, прошли ли все формы валидацию
-        $('.panel-box-item__content form').each(function() {
-            if (!$(this).valid()) {
-                formsValid = false;
-                return false; // Прерываем цикл, если хотя бы одна форма невалидна
-            }
+        forms.each(function(){
+            if(!validateForms(this)){
+                allValid = false;
+            } 
+            console.log(JSON.stringify(formDataArray, null, 2));
         });
 
-        if (formsValid) {
-            // Если все формы валидны, отправляем данные на сервер
-            $('.result').trigger('click');
+        if(allValid){
+            // Отправка данных на сервер
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:7070/requestClient',
+                data: JSON.stringify(formDataArray),
+                contentType: 'application/json',
+                success: function(response){
+                    console.log('Данные успешно отправлены на сервер.', response);
+                    // Добавьте здесь любую логику обработки успешного ответа сервера
+                    $('.thank, #thanks').fadeIn('slow');
+                    
+                },
+                error: function(error){
+                    console.error('Ошибка при отправке данных на сервер.', error);
+                    // Добавьте здесь обработку ошибки отправки на сервер
+                    $('.errors, #errorses').fadeIn('slow');
+                }
+            });
         } else {
-            // Если есть невалидные формы, показываем сообщение об ошибке
-            $('.errors, #errorses').fadeIn('slow');
+            console.log('Есть невалидные формы. Пожалуйста, исправьте ошибки.');
         }
     });
-
-
-
-
-    $('#sending-check').on('click', function(e) {
-        e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
-        validateFormer('.modal__footer form');
-        var formData = {
-            tariff: $('.select').val(),
-            name: $('.names').val(),
-            phone: $('.phone').val(),
-            email: $('.email').val(),
-            schedule: [],
-            time: []
-        };
-        
-        // Добавляем выбранные дни недели в массив
-        $('.modal__week input[name="days"]').each(function() {
-            // Проверяем, выбран ли чекбокс
-            if ($(this).is(':checked')) {
-                // Если выбран, добавляем значение соответствующего дня недели в массив
-                var dayOfWeek = $(this).nextAll('input[name="week"]').first().val();
-                formData.schedule.push(dayOfWeek);
-                
-            }
-        });
-        /* // Добавляем выбранные дни недели в массив
-        $('.modal__week__item_active').each(function() {
-            formData.schedule.push($(this).siblings('.modal__week__item_active').val());
-        }); */
-        
-        // Добавляем выбранное время в массив
-        $('.modal__time input[name="time"]:checked').each(function() {
-            if ($(this).is(':checked')) {
-                // Если выбран, добавляем значение соответствующего дня недели в массив
-                var dayOfTime = $(this).nextAll('.modal__time__item').first().val();
-                formData.time.push(dayOfTime);
-            }
-        });
-
-        var jsonData = JSON.stringify(formData);
-
-        console.log('JSON данных:', jsonData);
-        
-        // Отправляем данные на сервер с помощью AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:7070/requestClient', // Замени это на свой URL
-            data: JSON.stringify(formData), // Отправляем данные в формате JSON
-            contentType: 'application/json',
-            success: function(response) {
-                // Действия при успешной отправке
-                $('.overlay, #order').fadeOut('slow');
-                $('.thank, #thanks').fadeIn('slow');
-            },
-            error: function(err) {
-                // Действия при ошибке отправки
-                $('.errors, #errorses').fadeIn('slow');
-            }
-            
-        });
-            // ваш AJAX запрос и отправка данных на сервер остаются теми же
-    });
-
-    
      
 });
+
+
 
 
 
