@@ -265,6 +265,8 @@ $(document).ready(function() {
                     $('#order form')[0].reset();
                     $('input[type="checkbox"]').prop('disabled', true);
                     $('.modal__time__item').removeClass('modal__time__item_active');
+                    $('.modal__week__item').removeClass('modal__week__item_active');
+                    
                     
                 },
                 error: function(error){
@@ -386,6 +388,7 @@ $(document).ready(function() {
                     $('.modal__footer form')[0].reset();
                     $('input[type="checkbox"]').prop('disabled', true);
                     $('.modal__time__item').removeClass('modal__time__item_active');
+                    $('.modal__week__item').removeClass('modal__week__item_active');
                     
                 },
                 error: function(error){
