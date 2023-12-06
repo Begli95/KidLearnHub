@@ -1,7 +1,7 @@
-function processJsonData(jsonData1) {
+function processJsonDataClients(jsonData1) {
     var jsonData = JSON.parse(jsonData1);
 
-    var tableBody = document.querySelector('.your-table-tbody');
+    var tableBody = document.querySelector('.table-tbody');
     jsonData.forEach(function(data) {
         var row = document.createElement('tr');
 

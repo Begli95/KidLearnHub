@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="header__wrapper">
                     <div class="header__logo">
-                        <a class="header__src" href="index.html">
+                        <a class="header__src" href="/">
                             <img src="icons/Logo_txt.png" alt="logo">
                         </a>                        
                     </div>
@@ -48,7 +48,7 @@
                     </table>	
                     <div id="clients" class="scroll-table-body">
                         <table>
-                            <tbody class="your-table-tbody">
+                            <tbody class="table-tbody">
                             </tbody>
                         </table>
                     </div>	
@@ -65,45 +65,45 @@
             </h2>
             <div class="panel-box__content">
                 <div class="panel-box-item">
-                    <div class="panel-box-item__wrapper">
+                    <div id="card1" class="panel-box-item__wrapper">
                         <div class="panel-box-item__content ">  
                             <form action="">
-                                <input name="name" class="panel-box-item__descr" type="text" placeholder="Название">               
-                                <input name="price" class="panel-box-item__descr" type="text" placeholder="Стоимость"> 
-                                <input name="max_students" class="panel-box-item__descr" type="text" placeholder="Количество учеников в группе"> 
-                                <input name="period" class="panel-box-item__descr" type="text" placeholder="Срок реализации"> 
-                                <input name="duration" class="panel-box-item__descr" type="text" placeholder="Длительность занятия"> 
-                                <input name="type_of_lessons" class="panel-box-item__descr" type="text" placeholder="Тип занятия"> 
+                                <input name="name" class="name panel-box-item__descr" type="text" placeholder="Название">
+                                <input name="price" class="price panel-box-item__descr" type="text" placeholder="Стоимость">
+                                <input name="max_students" class="max_students panel-box-item__descr" type="text" placeholder="Количество учеников в группе">
+                                <input name="period" class="period panel-box-item__descr" type="text" placeholder="Срок реализации">
+                                <input name="duration" class="duration panel-box-item__descr" type="text" placeholder="Длительность занятия">
+                                <input name="type_of_lessons" class="type_of_lessons panel-box-item__descr" type="text" placeholder="Тип занятия">
                             </form>  
                         </div>
                     </div>
                 </div>
 
                 <div class="panel-box-item">
-                    <div class="panel-box-item__wrapper">
+                    <div id="card2" class="panel-box-item__wrapper">
                         <div class="panel-box-item__content ">    
                             <form action="">
-                                <input name="name" class="panel-box-item__descr" type="text" placeholder="Название">               
-                                <input name="price" class="panel-box-item__descr" type="text" placeholder="Стоимость"> 
-                                <input name="max_students" class="panel-box-item__descr" type="text" placeholder="Количество учеников в группе"> 
-                                <input name="period" class="panel-box-item__descr" type="text" placeholder="Срок реализации"> 
-                                <input name="duration" class="panel-box-item__descr" type="text" placeholder="Длительность занятия"> 
-                                <input name="type_of_lessons" class="panel-box-item__descr" type="text" placeholder="Тип занятия"> 
+                                <input name="name" class="name panel-box-item__descr" type="text" placeholder="Название">
+                                <input name="price" class="price panel-box-item__descr" type="text" placeholder="Стоимость">
+                                <input name="max_students" class="max_students panel-box-item__descr" type="text" placeholder="Количество учеников в группе">
+                                <input name="period" class="period panel-box-item__descr" type="text" placeholder="Срок реализации">
+                                <input name="duration" class="duration panel-box-item__descr" type="text" placeholder="Длительность занятия">
+                                <input name="type_of_lessons" class="type_of_lessons panel-box-item__descr" type="text" placeholder="Тип занятия">
                             </form> 
                         </div>
                     </div>
                 </div>
 
                 <div class="panel-box-item">
-                    <div class="panel-box-item__wrapper">
+                    <div id="card3" class="panel-box-item__wrapper">
                         <div class="panel-box-item__content ">    
                             <form action="">
-                                <input name="name" class="panel-box-item__descr" type="text" placeholder="Название">               
-                                <input name="price" class="panel-box-item__descr" type="text" placeholder="Стоимость"> 
-                                <input name="max_students" class="panel-box-item__descr" type="text" placeholder="Количество учеников в группе"> 
-                                <input name="period" class="panel-box-item__descr" type="text" placeholder="Срок реализации"> 
-                                <input name="duration" class="panel-box-item__descr" type="text" placeholder="Длительность занятия"> 
-                                <input name="type_of_lessons" class="panel-box-item__descr" type="text" placeholder="Тип занятия">
+                                <input name="name" class="name panel-box-item__descr" type="text" placeholder="Название">
+                                <input name="price" class="price panel-box-item__descr" type="text" placeholder="Стоимость">
+                                <input name="max_students" class="max_students panel-box-item__descr" type="text" placeholder="Количество учеников в группе">
+                                <input name="period" class="period panel-box-item__descr" type="text" placeholder="Срок реализации">
+                                <input name="duration" class="duration panel-box-item__descr" type="text" placeholder="Длительность занятия">
+                                <input name="type_of_lessons" class="type_of_lessons panel-box-item__descr" type="text" placeholder="Тип занятия">
                             </form> 
                         </div>
                     </div>
@@ -115,15 +115,20 @@
         </div>
     </section>
 
-    <script src="js/clientsData.js" ></script>
-    <script>
-        var jsonData = 'DATA';
-        processJsonData(jsonData);
-    </script>
+
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/jquery.maskedinput.min.js"></script>
     <script src="js/script.js"></script>
+
+    <script src="js/clientsData.js" ></script>
+    <script src="js/cardsData.js" ></script>
+    <script>
+        var jsonDataClients = 'dataClients';
+        var jsonDataTariffs = 'dataTariffs';
+        processJsonDataClients(jsonDataClients);
+        processJsonDataTariffs(jsonDataTariffs);
+    </script>
 </body>
 </html>

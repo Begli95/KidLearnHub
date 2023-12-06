@@ -17,7 +17,7 @@ public class UtilityService {
 
     public static int getTariffIdByName(String tariffName) {
         tariffName = tariffName.toUpperCase();
-
+        System.out.println(tariffName);
         int tariffId = -1;
 
         String sql = "SELECT id FROM tariffs WHERE tariffs.name = ?";

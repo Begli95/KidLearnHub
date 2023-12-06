@@ -1,0 +1,3 @@
+function processJsonDataTariffs(jsonData1) {
+
+}
