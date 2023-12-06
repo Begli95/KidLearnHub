@@ -11,9 +11,28 @@ function processJsonData(jsonData) {
         card.querySelector('.duration').textContent = data.duration;
         card.querySelector('.type_of_lessons').textContent = data.type_of_lessons;
     });
+    dataArray.forEach(function(data, indexTariff1) {
+        var existingOption = document.getElementById('tariffName1' + (indexTariff1 + 1));
+
+        if (existingOption) {
+            existingOption.textContent = data.name;
+            existingOption.value = data.name;
+        }
+    });
+
+    dataArray.forEach(function(data, indexTariff2) {
+        var existingOption = document.getElementById('tariffName2' + (indexTariff2 + 1));
+
+        if (existingOption) {
+            existingOption.textContent = data.name;
+            existingOption.value = data.name;
+        }
+    });
 }
+
 function processJsonDataTariffs(jsonData) {
     var dataArray = JSON.parse(jsonData);
+
 
     dataArray.forEach(function(data, index) {
         var card = document.getElementById('card' + (index + 1));
