@@ -262,6 +262,7 @@ $(document).ready(function() {
                     console.log('Данные успешно отправлены на сервер.', response);
                     // Добавьте здесь любую логику обработки успешного ответа сервера
                     $('.thank, #thanks').fadeIn('slow');
+                    $('#order form')[0].reset();
                     
                 },
                 error: function(error){
@@ -380,6 +381,7 @@ $(document).ready(function() {
                     console.log('Данные успешно отправлены на сервер.', response);
                     // Добавьте здесь любую логику обработки успешного ответа сервера
                     $('.thank, #thanks').fadeIn('slow');
+                    $('.modal__footer form')[0].reset();
                     
                 },
                 error: function(error){
