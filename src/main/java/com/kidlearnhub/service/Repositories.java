@@ -11,70 +11,47 @@ import java.sql.SQLException;
 public class Repositories {
     public static String getClients(Connection connection) throws SQLException {
         JSONArray jsonArrayClients = new JSONArray();
+        String sqlQueryClients = "SELECT clients.name AS clients_name, clients.phone, " +
+                "clients.email, clients.schedule, clients.lesson_time, tariffs.name AS " +
+                "tariffs_name FROM clients LEFT JOIN tariffs ON clients.tariff_id = tariffs.id";
 
-        String sqlQueryClients = "select clients.name as clients_name, clients.phone, " +
-                "clients.email, clients.schedule,clients.lesson_time, tariffs.name as " +
-                "tariffs_name FROM  clients Left Join  tariffs on clients.tariff_id = tariffs.id";
+        try (PreparedStatement preparedStatementClients = connection.prepareStatement(sqlQueryClients);
+             ResultSet resultSetClients = preparedStatementClients.executeQuery()) {
 
-        PreparedStatement preparedStatementClients = connection.prepareStatement(sqlQueryClients);
+            while (resultSetClients.next()) {
+                JSONObject jsonObjectClients = new JSONObject();
+                jsonObjectClients.put("clientsName", resultSetClients.getString("clients_name"));
+                jsonObjectClients.put("phone", resultSetClients.getString("phone"));
+                jsonObjectClients.put("email", resultSetClients.getString("email"));
+                jsonObjectClients.put("schedule", resultSetClients.getString("schedule"));
+                jsonObjectClients.put("lesson_time", resultSetClients.getString("lesson_time"));
+                jsonObjectClients.put("tariffsName", resultSetClients.getString("tariffs_name"));
 
-        ResultSet resultSetClients = preparedStatementClients.executeQuery();
-
-        while (resultSetClients.next()) {
-            String clientsName = resultSetClients.getString("clients_name");
-            String phone = resultSetClients.getString("phone");
-            String email = resultSetClients.getString("email");
-            String schedule = resultSetClients.getString("schedule");
-            String lesson_time = resultSetClients.getString("lesson_time");
-            String tariffsName = resultSetClients.getString("tariffs_name");
-            //System.out.println(clientsName+" "+phone+" "+email+" "+schedule+" "+lesson_time+" "+tariffsName);
-            JSONObject jsonObjectClients = new JSONObject();
-            jsonObjectClients.put("clientsName", clientsName);
-            jsonObjectClients.put("phone", phone);
-            jsonObjectClients.put("email", email);
-            jsonObjectClients.put("schedule", schedule);
-            jsonObjectClients.put("lesson_time", lesson_time);
-            jsonObjectClients.put("tariffsName", tariffsName);
-
-            jsonArrayClients.add(jsonObjectClients);
+                jsonArrayClients.add(jsonObjectClients);
+            }
         }
-        String jsonDataClients = jsonArrayClients.toString();
-
-        resultSetClients.close();
-        preparedStatementClients.close();
-        return jsonDataClients;
+        return jsonArrayClients.toString();
     }
 
     public static String getTariffs(Connection connection) throws SQLException {
         JSONArray jsonArrayTariffs = new JSONArray();
-        String sqlQueryTariffs = "select * from tariffs";
+        String sqlQueryTariffs = "SELECT * FROM tariffs";
 
-        PreparedStatement preparedStatementClients = connection.prepareStatement(sqlQueryTariffs);
+        try (PreparedStatement preparedStatementTariffs = connection.prepareStatement(sqlQueryTariffs);
+             ResultSet resultSetTariffs = preparedStatementTariffs.executeQuery()) {
 
-        ResultSet resultSetTariffs = preparedStatementClients.executeQuery();
+            while (resultSetTariffs.next()) {
+                JSONObject jsonObjectTariffs = new JSONObject();
+                jsonObjectTariffs.put("name", resultSetTariffs.getString("name"));
+                jsonObjectTariffs.put("price", resultSetTariffs.getString("price"));
+                jsonObjectTariffs.put("max_students", resultSetTariffs.getString("max_students"));
+                jsonObjectTariffs.put("period", resultSetTariffs.getString("period"));
+                jsonObjectTariffs.put("duration", resultSetTariffs.getString("duration"));
+                jsonObjectTariffs.put("type_of_lessons", resultSetTariffs.getString("type_of_lessons"));
 
-        while (resultSetTariffs.next()) {
-            String name = resultSetTariffs.getString("name");
-            String price = resultSetTariffs.getString("price");
-            String max_students = resultSetTariffs.getString("max_students");
-            String period = resultSetTariffs.getString("period");
-            String duration = resultSetTariffs.getString("duration");
-            String type_of_lessons = resultSetTariffs.getString("type_of_lessons");
-            //System.out.println(name+" "+price+" "+max_students+" "+period+" "+duration+" "+type_of_lessons);
-            JSONObject jsonObjectClients = new JSONObject();
-            jsonObjectClients.put("name", name);
-            jsonObjectClients.put("price", price);
-            jsonObjectClients.put("max_students", max_students);
-            jsonObjectClients.put("period", period);
-            jsonObjectClients.put("duration", duration);
-            jsonObjectClients.put("type_of_lessons", type_of_lessons);
-
-            jsonArrayTariffs.add(jsonObjectClients);
+                jsonArrayTariffs.add(jsonObjectTariffs);
+            }
         }
-        String jsonDataTariffs = jsonArrayTariffs.toString();
-
-        resultSetTariffs.close();
-        preparedStatementClients.close();
-        return jsonDataTariffs;
+        return jsonArrayTariffs.toString();
     }
 }

@@ -1,24 +1,22 @@
 package com.kidlearnhub;
 
 import com.kidlearnhub.controllers.*;
-import com.kidlearnhub.service.UtilityService;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 
 public class Main {
     public static void main(String[] args) {
+        String portStr = System.getenv().getOrDefault("PORT", "7070");
+        int port = Integer.parseInt(portStr);
         Javalin app = Javalin.create(config -> {
-            config.addStaticFiles("src/main/resources", Location.EXTERNAL);
-            //config.enableDevLogging();
+            config.addStaticFiles(staticFiles -> {
+                staticFiles.directory = "/public";
+                staticFiles.location = Location.CLASSPATH;
+            });
             config.enforceSsl = true;
-        }).start(7070);
+        }).start(port);
         addRoutes(app);
-
-        String[] dataArray = {"sdfsdf", "asdsadad", "as123123312"};
-        String result = UtilityService.convertToStr(dataArray);
-        System.out.println(result);
     }
-
 
     private static void addRoutes(Javalin app) {
         app.get("/", HomePageController.homeHandler);

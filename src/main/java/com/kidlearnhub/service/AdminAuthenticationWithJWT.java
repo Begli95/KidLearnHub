@@ -2,6 +2,7 @@ package com.kidlearnhub.service;
 
 import io.javalin.http.Context;
 
+import java.net.URISyntaxException;
 import java.sql.*;
 
 public class AdminAuthenticationWithJWT {
@@ -12,26 +13,21 @@ public class AdminAuthenticationWithJWT {
     }
 
     public static boolean isAdminValid(String email, String password) {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/KidLearnHubDB", "postgres", "root");
-            String sql = "SELECT * FROM admin";
+        try (Connection connection = UtilityService.getDatabaseConnection()) {
+            String sql = "SELECT * FROM admin WHERE mail = ? AND password = ?";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String dbEmail = resultSet.getString("mail");
-                String dbPassword = resultSet.getString("password");
-                if (email.equals(dbEmail) && password.equals(dbPassword)) {
-                    return true;
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Если мы нашли запись, значит email и пароль верные
+                        return true;
+                    }
                 }
             }
-
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
-
-        } catch (SQLException e) {
+        } catch (SQLException | URISyntaxException e) {
             e.printStackTrace();
         }
         return false;

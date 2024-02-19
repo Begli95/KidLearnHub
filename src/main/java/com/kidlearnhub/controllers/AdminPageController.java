@@ -7,6 +7,7 @@ import io.javalin.http.Handler;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
+import java.net.URI;
 import java.security.Key;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,11 +21,14 @@ public class AdminPageController {
         if (!AdminAuthenticationWithJWT.isAdminAuthenticated(ctx)) {
             ctx.redirect("/enter_admin");
         } else {
-            String existingHtml = RenderHtmlFile.render("admin_panel.html");
+            String existingHtml = RenderHtmlFile.render("public/admin_panel.html");
             try {
-                Connection connection = DriverManager.
-                        getConnection("jdbc:postgresql://localhost:5432/KidLearnHubDB",
-                                "postgres", "root");
+                URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                String username = dbUri.getUserInfo().split(":")[0];
+                String password = dbUri.getUserInfo().split(":")[1];
+                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+                Connection connection = DriverManager.getConnection(dbUrl, username, password);
 
                 String jsonDataClients = Repositories.getClients(connection);
                 String jsonDataTariffs = Repositories.getTariffs(connection);

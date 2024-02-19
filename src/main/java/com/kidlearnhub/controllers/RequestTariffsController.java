@@ -1,9 +1,11 @@
 package com.kidlearnhub.controllers;
 
+import com.kidlearnhub.service.UtilityService;
 import io.javalin.http.Handler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,46 +14,48 @@ import java.sql.SQLException;
 
 public class RequestTariffsController {
     public static Handler requestHandler = ctx -> {
-        //остановился тут . Занести данные в бд изменений
         String requestData = ctx.body();
         JSONParser parser = new JSONParser();
-        Object obj = parser.parse(requestData);
-        JSONArray jsonArray = (JSONArray) obj;
 
-        String updateSql = "UPDATE tariffs SET name = ?, price = ?, max_students = ?, period = ?, duration = ?, type_of_lessons = ? WHERE id = ?";
+        try {
+            JSONArray jsonArray = (JSONArray) parser.parse(requestData);
+            String updateSql = "UPDATE tariffs SET name = ?, price = ?, max_students = ?, period = ?, duration = ?, type_of_lessons = ? WHERE id = ?";
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/KidLearnHubDB", "postgres", "root");
-             PreparedStatement preparedStatement = connection.prepareStatement(updateSql)) {
-            int i = 1;
-            for (Object jsonEntry : jsonArray) {
-                JSONObject jsonObject = (JSONObject) jsonEntry;
+            try (Connection connection = UtilityService.getDatabaseConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement(updateSql)) {
+                connection.setAutoCommit(false);
 
-                int id = i;  // Здесь предполагается, что у вас есть поле id в вашем JSON-объекте.
-                String name = (String) jsonObject.get("name");
-                String price = (String) jsonObject.get("price");
-                String max_students = (String) jsonObject.get("max_students");
-                String period = (String) jsonObject.get("period");
-                String duration = (String) jsonObject.get("duration");
-                String type_of_lessons = (String) jsonObject.get("type_of_lessons");
+                for (Object jsonEntry : jsonArray) {
+                    JSONObject jsonObject = (JSONObject) jsonEntry;
 
-                preparedStatement.setString(1, name);
-                preparedStatement.setString(2, price);
-                preparedStatement.setString(3, max_students);
-                preparedStatement.setString(4, period);
-                preparedStatement.setString(5, duration);
-                preparedStatement.setString(6, type_of_lessons);
-                preparedStatement.setInt(7, id);  // Здесь предполагается, что id - это уникальный идентификатор записи.
+                    int id = ((Long) jsonObject.get("id")).intValue(); // ID должно быть получено из JSON объекта
+                    String name = (String) jsonObject.get("name");
+                    String price = (String) jsonObject.get("price");
+                    String max_students = (String) jsonObject.get("max_students");
+                    String period = (String) jsonObject.get("period");
+                    String duration = (String) jsonObject.get("duration");
+                    String type_of_lessons = (String) jsonObject.get("type_of_lessons");
 
-                preparedStatement.executeUpdate();
-                i++;
+                    preparedStatement.setString(1, name);
+                    preparedStatement.setString(2, price);
+                    preparedStatement.setString(3, max_students);
+                    preparedStatement.setString(4, period);
+                    preparedStatement.setString(5, duration);
+                    preparedStatement.setString(6, type_of_lessons);
+                    preparedStatement.setInt(7, id);
+
+                    preparedStatement.addBatch();
+                }
+                preparedStatement.executeBatch();
+                connection.commit(); // Фиксация изменений
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.status(500).json("Server Error: Error in database operation");
             }
-            System.out.println("Данные изменены!");
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
+            ctx.status(400).json("Bad Request: Error in parsing JSON");
         }
-
-
     };
 }
