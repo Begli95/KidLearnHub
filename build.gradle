@@ -4,6 +4,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.heroku.sdk.heroku-gradle' version '2.0.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
 group 'com.kidlearnhub'
@@ -48,11 +49,10 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
 }
+
 
 task stage(dependsOn: ['build', 'clean']) {
     doLast {
@@ -67,3 +67,9 @@ heroku {
     )
 }
 
+shadowJar {
+    archiveClassifier.set('')
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
