@@ -1,0 +1,47 @@
+@import "base/variables";
+
+* {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+@media screen and (max-width: 667px) {
+    body {
+        overflow-x: hidden !important;
+    }
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.WeDo_2{
+    color: #9D33DB;
+    text-transform: uppercase;
+}
+
+.Scratch{
+    color: #F59D1E;
+    text-transform: uppercase;
+}
+
+@import "blocks/header";
+@import "blocks/button";
+@import "blocks/catalog";
+@import "blocks/title";
+@import "blocks/modal";
+@import "blocks/forms";
+@import "blocks/footer";
+@import "blocks/description";
+@import "blocks/scratch";
+@import "blocks/box";
+@import "blocks/video";
+@import "blocks/sending";
+@import "blocks/admin_panel";

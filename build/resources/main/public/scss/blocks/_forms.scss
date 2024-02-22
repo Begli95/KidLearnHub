@@ -1,0 +1,75 @@
+.feed-form {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    &__input{
+        border-radius: 5px;
+        background-color: #fff;
+        height: 3vh;
+        max-height: 54px;
+        flex-shrink: 0;
+        margin-bottom: 15px;
+        border: none;
+        padding: 0 20px;
+        color: #4b4b4b;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 15px;
+        &:nth-child(4){
+            margin-bottom: 15px;
+        }
+        &:nth-child(5){
+            margin-bottom: 15px;
+        }
+    }
+    &_mt25 {
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    .select {
+        text-align: center;
+        border-radius: 5px;
+        background-color: #fff;
+        height: 3vh;
+        max-height: 54px;
+        flex-shrink: 0;
+        margin-bottom: 15px;
+        border: none;
+        color:black;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+           option {
+            white-space: normal;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            
+           }      
+    }
+}
+
+@media (max-width: 575px) {
+    
+    .feed-form {
+        width: 240px;
+        margin-top: 5px;
+        &__input {
+            height: 25px;
+            margin-bottom: 5px;
+            &:nth-child(4){
+                margin-bottom: 5px;
+            }
+            &:nth-child(5){
+                margin-bottom: 10px;
+            }
+        }
+        .select {
+            font-size: 14px;
+            height: 25px;
+        }
+    }
+}

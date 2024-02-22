@@ -1,0 +1,21 @@
+.sending {
+    padding: 100px 0;
+    background: url(../img/modal_footer.jpg) repeat center center/contain;
+    border: solid 1px #DBD8D9;
+}
+
+@media (max-width: 575px) {
+    .sending {
+        padding: 0 0 40px 0;
+        background: none;
+        border: none;
+        .modal {
+            padding: 10px;
+            width: 270px;
+            &__time {
+                width: 245px;
+            }
+        }
+        
+    }
+}
