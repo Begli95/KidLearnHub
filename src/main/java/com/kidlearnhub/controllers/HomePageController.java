@@ -6,9 +6,12 @@ import io.javalin.http.Handler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.net.URI;
+
 import java.net.URISyntaxException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class HomePageController {
     public static Handler homeHandler = ctx -> {
@@ -43,7 +46,7 @@ public class HomePageController {
             }
             String jsonData = jsonArray.toString();
             String finalHtml = existingHtml.replace("DATA", jsonData);
-            ctx.html(finalHtml);
+            ctx.html(existingHtml);
 
         } catch (SQLException | URISyntaxException e) {
             e.printStackTrace();
