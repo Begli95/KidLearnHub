@@ -42,7 +42,7 @@ public class RequestClientController {
 
             try (Connection connection = UtilityService.getDatabaseConnection();
                  PreparedStatement preparedStatement = connection.prepareStatement(insertSql)) {
-
+                System.out.println("Success connection request Client");
                 preparedStatement.setInt(1, UtilityService.getTariffIdByName(tariff));
                 preparedStatement.setString(2, name);
                 preparedStatement.setString(3, phone);

@@ -255,7 +255,7 @@ $(document).ready(function() {
             // Отправка данных на сервер
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:7070/requestClient',
+                url: 'https://myapp-latest.onrender.com/requestClient',
                 data: JSON.stringify(formDataArray),
                 contentType: 'application/json',
                 success: function(response){
@@ -270,13 +270,13 @@ $(document).ready(function() {
                     
                 },
                 error: function(error){
-                    console.error('Ошибка при отправке данных на сервер.', error);
+                    console.error('Ошибка при отправке данных на сервер. Проверьте данные!', error);
                     // Добавьте здесь обработку ошибки отправки на сервер
                     $('.errors, #errorses').fadeIn('slow');
                 }
             });
         } else {
-            console.log('Есть невалидные формы. Пожалуйста, исправьте ошибки.');
+            console.log('Есть невалидные формы. Пожалуйста, исправьте ошибки!');
         }
     });
      
@@ -378,7 +378,7 @@ $(document).ready(function() {
             // Отправка данных на сервер
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:7070/requestClient',
+                url: 'https://myapp-latest.onrender.com/requestClient',
                 data: JSON.stringify(formDataArray),
                 contentType: 'application/json',
                 success: function(response){
@@ -498,16 +498,16 @@ $(document).ready(function(){
             // Отправка данных на сервер
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:7070/requestTariffs',
+                url: 'https://myapp-latest.onrender.com/requestTariffs',
                 data: JSON.stringify(formDataArray),
                 contentType: 'application/json',
                 success: function(response){
-                    console.log('Данные успешно отправлены на сервер.', response);
+                    console.log('Данные успешно отправлены на сервер!', response);
                     // Добавьте здесь любую логику обработки успешного ответа сервера
-                    alert('Данные успешно отправлены на сервер');
+                    alert('Данные успешно отправлены на сервер!');
                 },
                 error: function(error){
-                    console.error('Ошибка при отправке данных на сервер.', error);
+                    console.error('Ошибка при отправке данных на сервер!', error);
                     // Добавьте здесь обработку ошибки отправки на сервер
                 }
             });

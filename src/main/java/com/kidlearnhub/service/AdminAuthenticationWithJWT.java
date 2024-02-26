@@ -22,7 +22,6 @@ public class AdminAuthenticationWithJWT {
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        // Если мы нашли запись, значит email и пароль верные
                         return true;
                     }
                 }

@@ -3,14 +3,14 @@ package com.kidlearnhub.controllers;
 import com.kidlearnhub.service.AdminAuthenticationWithJWT;
 import com.kidlearnhub.service.RenderHtmlFile;
 import com.kidlearnhub.service.Repositories;
+import com.kidlearnhub.service.UtilityService;
 import io.javalin.http.Handler;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
-import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.Key;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class AdminPageController {
@@ -23,12 +23,7 @@ public class AdminPageController {
         } else {
             String existingHtml = RenderHtmlFile.render("public/admin_panel.html");
             try {
-                URI dbUri = new URI(System.getenv("DATABASE_URL"));
-                String username = dbUri.getUserInfo().split(":")[0];
-                String password = dbUri.getUserInfo().split(":")[1];
-                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
-
-                Connection connection = DriverManager.getConnection(dbUrl, username, password);
+                Connection connection = UtilityService.getDatabaseConnection();
 
                 String jsonDataClients = Repositories.getClients(connection);
                 String jsonDataTariffs = Repositories.getTariffs(connection);
@@ -37,7 +32,7 @@ public class AdminPageController {
                 ctx.html(finalHtml);
 
                 connection.close();
-            } catch (SQLException e) {
+            } catch (SQLException | URISyntaxException e) {
                 e.printStackTrace();
                 ctx.status(500).json("Error occurred while processing the request");
             }

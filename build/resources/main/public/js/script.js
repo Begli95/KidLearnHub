@@ -255,7 +255,7 @@ $(document).ready(function() {
             // Отправка данных на сервер
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:7070/requestClient',
+                url: 'https://myapp-latest.onrender.com/requestClient',
                 data: JSON.stringify(formDataArray),
                 contentType: 'application/json',
                 success: function(response){
@@ -378,7 +378,7 @@ $(document).ready(function() {
             // Отправка данных на сервер
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:7070/requestClient',
+                url: 'https://myapp-latest.onrender.com/requestClient',
                 data: JSON.stringify(formDataArray),
                 contentType: 'application/json',
                 success: function(response){
@@ -498,7 +498,7 @@ $(document).ready(function(){
             // Отправка данных на сервер
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:7070/requestTariffs',
+                url: 'https://myapp-latest.onrender.com/requestTariffs',
                 data: JSON.stringify(formDataArray),
                 contentType: 'application/json',
                 success: function(response){

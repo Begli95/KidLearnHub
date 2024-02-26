@@ -8,7 +8,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -24,11 +23,11 @@ public class RequestTariffsController {
             try (Connection connection = UtilityService.getDatabaseConnection();
                  PreparedStatement preparedStatement = connection.prepareStatement(updateSql)) {
                 connection.setAutoCommit(false);
+                System.out.println("Success connection request Tariff");
 
                 for (Object jsonEntry : jsonArray) {
                     JSONObject jsonObject = (JSONObject) jsonEntry;
 
-                    int id = ((Long) jsonObject.get("id")).intValue(); // ID должно быть получено из JSON объекта
                     String name = (String) jsonObject.get("name");
                     String price = (String) jsonObject.get("price");
                     String max_students = (String) jsonObject.get("max_students");
@@ -42,7 +41,7 @@ public class RequestTariffsController {
                     preparedStatement.setString(4, period);
                     preparedStatement.setString(5, duration);
                     preparedStatement.setString(6, type_of_lessons);
-                    preparedStatement.setInt(7, id);
+                    preparedStatement.setInt(7, UtilityService.getTariffIdByName(name));
 
                     preparedStatement.addBatch();
                 }

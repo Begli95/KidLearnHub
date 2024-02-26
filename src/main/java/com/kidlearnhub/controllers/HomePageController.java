@@ -18,7 +18,7 @@ public class HomePageController {
         String existingHtml = RenderHtmlFile.render("public/index.html");
         try {
             Connection connection = UtilityService.getDatabaseConnection();
-
+            System.out.println("Success connection homepage");
             JSONArray jsonArray = new JSONArray();
             String sql = "SELECT * FROM tariffs";
 
@@ -46,7 +46,7 @@ public class HomePageController {
             }
             String jsonData = jsonArray.toString();
             String finalHtml = existingHtml.replace("DATA", jsonData);
-            ctx.html(existingHtml);
+            ctx.html(finalHtml);
 
         } catch (SQLException | URISyntaxException e) {
             e.printStackTrace();

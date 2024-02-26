@@ -3,6 +3,7 @@ package com.kidlearnhub.service;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.util.Properties;
 
 public class UtilityService {
 
@@ -33,11 +34,19 @@ public class UtilityService {
     }
 
     public static Connection getDatabaseConnection() throws URISyntaxException, SQLException {
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        String dbUrl = System.getenv("DATABASE_URL");
+        Properties props = new Properties();
+        URI dbUri = new URI(dbUrl);
+
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+        System.out.println("User "+username+" Password "+password);
+        String dbUrlJdbc = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-        return DriverManager.getConnection(dbUrl, username, password);
+        props.setProperty("user", username);
+        props.setProperty("password", password);
+        return DriverManager.getConnection(dbUrlJdbc, props);
     }
+
+
 }
